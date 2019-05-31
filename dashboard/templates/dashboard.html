@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block content %}
+<!--<p>Welcome to the dashboard</p>-->
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1><i class="fa fa-dot-circle-o mr-3" aria-hidden="true"></i>Trackx</h1>
+        <p>Trackx is a web app to allow users to set up tasks for various projects to organize workflow</p>
+    </div>
+</div>
+&nbsp;
+<div class="row">
+    <div class="col-md-6 text-center featured">
+        <div class="featured-box">
+            <div>
+                <h3>Tasks</h3>
+                <p>Create tasks and organize what I need to do</p>
+                <p>Better workflow, keep what I need to do from paper and custom tasks according to projects and priority</p>
+            </div>
+            <div>
+                <h4>Task Stats</h4>
+                <h6>To Do:</h6>
+                <p class="font-weight-bold">{{ todo }}</p>
+                <h6>In Progress:</h6>
+                <p class="font-weight-bold">{{ progress }}</p>
+                <h6>Done:</h6>
+                <p class="font-weight-bold">{{ done }}</p>
+
+
+                <p><a href="#" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> View Tasks</a></p>
+                <p><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Create Task</a></p>
+
+            </div>
+        </div>
+        <hr/>
+    </div>
+
+    <div class="col-md-6 text-center featured">
+        <div class="featured-box">
+            <div>
+                <h3>Projects</h3>
+                <p>The latest projects that I'm working on</p>
+                <p>From Website Development to College Work to General tasks and Reminders. Constantly trying to get things done.</p>
+            </div>
+            <div>
+                <h4>Project Stats</h4>
+                <h6>Work:</h6>
+                <p class="font-weight-bold">{{ work }}</p>
+                <h6>Education:</h6>
+                <p class="font-weight-bold">{{ education }}</p>
+                <h6>Personal:</h6>
+                <p class="font-weight-bold">{{ personal }}</p>
+
+                <p><a href="#" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> View Projects</a></p>
+                <p><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Create Project</a></p>
+            </div>
+        </div>
+        <hr/>
+    </div>
+</div>
+{% endblock %}
