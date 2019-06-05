@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="create"><span><a href="#">Create a new Project</a></span></h3>
+    </div>
+    <hr />
+</div>
+
+&nbsp;
+<div class="row">
+    <div class="col-md-10 col-sm-12"></div>
+    <div class="col-md-2 col-sm-12">
+        <form action="{% url 'get_projects' %}" method="POST">
+            {% csrf_token %}
+            <select name="search" class="form-control">
+              <option value="all" default>Show All</option>
+              <option value="work">Work</option>
+              <option value="education" >Education</option>
+              <option value="personal" >Personal</option>
+            </select>
+            <input id="search_button" class="btn btn-primary" type="submit" value="Search" />
+        </form>
+    </div>
+</div>
+
+&nbsp;
+
+<div class="row">
+    {% for project in projects %}
+    <div class="col-md-4">
+        <p><span class="boldtext">Name:</span> {{project.name}}</p>
+        <p><span class="boldtext">Type:</span> {{ project.status }}</p>
+        <p>
+            <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
+            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> Tasks</a>
+        </p>
+        <hr />
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
