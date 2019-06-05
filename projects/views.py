@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 from .models import Project
+from .forms import ProjectForm
 
 # Create your views here.
 @login_required()
@@ -38,3 +39,39 @@ def get_projects(request):
         projects = Project.objects.filter(user__username=request.user)
         
         return render(request, "projects.html", {'projects': projects})
+        
+        
+@login_required()    
+#Get Project Information
+def project_info(request, pk):
+    
+    project = get_object_or_404(Project, pk=pk)
+    print("Check Project: {}".format(project))
+    project.save()
+    return render(request, "projectinfo.html", {'project': project})
+    
+@login_required()  
+#Edit or Create a Project
+def create_or_edit_project(request, pk=None):
+    
+    project = get_object_or_404(Project, pk=pk) if pk else None
+    if request.method == "POST":
+        form = ProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = request.user
+            project.save()
+            return redirect(reverse('get_projects'))
+    else:
+        form = ProjectForm(instance=project)
+    return render(request, 'projectform.html', {'form': form})
+    
+    
+@login_required()   
+#Deletes a project
+def delete_project(request, pk=None):
+    
+    Project.objects.filter(id=pk).delete()
+    return redirect(reverse('get_projects'))
+
+    

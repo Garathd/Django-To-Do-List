@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3 class="create"><span><a href="#">Create a new Project</a></span></h3>
+        <h3 class="create"><span><a href="{% url 'create_project' %}">Create a new Project</a></span></h3>
     </div>
     <hr />
 </div>
@@ -32,7 +32,7 @@
         <p><span class="boldtext">Name:</span> {{project.name}}</p>
         <p><span class="boldtext">Type:</span> {{ project.status }}</p>
         <p>
-            <a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
+            <a href="{% url 'project_info' project.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
             <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> Tasks</a>
         </p>
         <hr />
