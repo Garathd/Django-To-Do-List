@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.core.urlresolvers import resolve
 from django.contrib.auth.decorators import login_required
 from .models import Project
+from tasks.models import Task
 from .forms import ProjectForm
 
 # Create your views here.
@@ -73,5 +75,23 @@ def delete_project(request, pk=None):
     
     Project.objects.filter(id=pk).delete()
     return redirect(reverse('get_projects'))
+    
+
+@login_required()
+#Selects tasks for a specific project only
+def view_only(request, pk=None):
+
+    project = Project.objects.filter(id=pk)
+    tasks = Task.objects.filter(project=project)
+    
+    for p in project:
+        project_name = p.name
+
+    return render(request, "project_tasks.html", {
+        'tasks': tasks,
+        'project_id': pk,
+        'project': project_name
+    })
+
 
     

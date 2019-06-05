@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <p><span class="boldtext">Name:</span> {{task.name}}</p>
+        <p><span class="boldtext">Description:</span> {{ task.description }}</p>
+        <p><span class="boldtext">Status:</span> {{ task.status }}</p>
+        <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
+        <p><span class="boldtext">Project:</span> {{ task.project }}</p>
+        <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
+        <hr />
+        <a href="{% url 'get_tasks' %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+        <a href="{% url 'edit_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+        <a href="{% url 'delete_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+    </div>
+</div>
+{% endblock %}

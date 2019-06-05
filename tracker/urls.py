@@ -17,6 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts import urls as urls_accounts
 from projects import urls as urls_projects
+from tasks import urls as urls_tasks
 from dashboard.views import dashboard_view
 from home.views import index
 
@@ -26,4 +27,5 @@ urlpatterns = [
     url(r'^accounts/', include(urls_accounts)),
     url(r'^dashboard/', dashboard_view, name='dashboard'),
     url(r'^projects/', include(urls_projects)),
+    url(r'^tasks/', include(urls_tasks)),
 ]

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <strong>Project: </strong> {{ project }}
+        <br>
+        <strong>Project ID: </strong> {{ project_id }}
+        <h3 class="create"><span><a href="{% url 'create_task' %}">Create a new Task</a></span></h3>
+    </div>
+</div>
+&nbsp;
+<div class="row">
+    {% for task in tasks %}
+    <div class="col-md-4">
+        <p><span class="boldtext">Name:</span> {{task.name}}</p>
+        <p><span class="boldtext">Project:</span> {{ task.project }}</p>
+        <p><span class="boldtext">Status:</span> {{ task.status }}</p>
+        {% if task.priority == 'High' %}
+        <p style="color:red; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
+        {% elif task.priority == 'Medium' %}
+        <p style="color:orange; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
+        {% elif task.priority == 'Low' %}
+        <p style="color:green; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
+        {% endif %}
+        <p><a href="{% url 'task_info' task.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> More...</a></p>
+        <hr />
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
