@@ -58,24 +58,28 @@ def task_info(request, pk):
     task = get_object_or_404(Task, pk=pk)
     task.save()
 
-    return render(request, "taskinfo.html", {'task': task })
-    
-    
+    return render(request, "taskinfo.html", {
+        'task': task
+    })
+
+
 @login_required() 
-#Edit or Create a Task
-def create_or_edit_task(request, pk=None, project=Project):
-   
-    print("Check request: {0} and the pk is {1}".format(request, pk))
-    print("Check project: {}".format(project))
+#Create or Edit a Task
+def create_or_edit_task(request, pk=None, project=None):
     
+    if project != None:
+        project_instance = get_object_or_404(Project, pk=project)
+
     task = get_object_or_404(Task, pk=pk) if pk else None
+   
     if request.method == "POST":
         form = TaskForm(request.POST, request.FILES, instance=task)
         if form.is_valid():
             task = form.save(commit=False)
-            task.project = request.project
+            if project != None:
+                task.project = project_instance
             task.save()
-            return redirect(reverse('get_tasks'))
+            return redirect(reverse('get_projects'))
     else:
         form = TaskForm(instance=task)
     return render(request, 'taskform.html', {'form': form})
@@ -86,6 +90,6 @@ def create_or_edit_task(request, pk=None, project=Project):
 def delete_task(request, pk=None):
     
     Task.objects.filter(id=pk).delete()
-    return redirect(reverse('get_tasks'))
+    return redirect(reverse('get_projects'))
 
         

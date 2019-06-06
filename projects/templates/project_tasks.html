@@ -2,10 +2,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <strong>Project: </strong> {{ project }}
-        <br>
-        <strong>Project ID: </strong> {{ project_id }}
-        <h3 class="create"><span><a href="{% url 'create_task' %}">Create a new Task</a></span></h3>
+        <h3 class="create"><span><a href="{% url 'create_task' project_id %}">Create a new Task</a></span></h3>
     </div>
 </div>
 &nbsp;
