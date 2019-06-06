@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from .views import get_projects, project_info, create_or_edit_project, delete_project, view_only
 
 urlpatterns = [

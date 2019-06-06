@@ -53,13 +53,14 @@ from django.utils import timezone
         
 @login_required()
 #Get Task Information
-def task_info(request, pk):
+def task_info(request, project, pk):
     
     task = get_object_or_404(Task, pk=pk)
     task.save()
 
     return render(request, "taskinfo.html", {
-        'task': task
+        'task': task,
+        'project': project
     })
 
 
