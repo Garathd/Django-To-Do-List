@@ -48,7 +48,6 @@ def get_projects(request):
 def project_info(request, pk):
     
     project = get_object_or_404(Project, pk=pk)
-    print("Check Project: {}".format(project))
     project.save()
     return render(request, "projectinfo.html", {'project': project})
     
@@ -66,7 +65,10 @@ def create_or_edit_project(request, pk=None):
             return redirect(reverse('get_projects'))
     else:
         form = ProjectForm(instance=project)
-    return render(request, 'projectform.html', {'form': form})
+    return render(request, 'projectform.html', {
+        'form': form,
+        'project': pk
+    })
     
     
 @login_required()   

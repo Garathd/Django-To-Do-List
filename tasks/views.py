@@ -83,7 +83,11 @@ def create_or_edit_task(request, pk=None, project=None):
             return redirect(reverse('get_projects'))
     else:
         form = TaskForm(instance=task)
-    return render(request, 'taskform.html', {'form': form})
+    return render(request, 'taskform.html', {
+        'form': form,
+        'task': pk,
+        'project': project
+    })
 
     
 @login_required()     

@@ -9,7 +9,7 @@
         <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
         <hr />
         <a href="{% url 'view_only' project %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
-        <a href="{% url 'edit_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+        <a href="{% url 'edit_task' task.id project %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
         <a href="{% url 'delete_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>
     </div>
 </div>

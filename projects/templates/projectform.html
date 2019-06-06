@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% load bootstrap_tags %}
 {% block content %}
-    <h1>New Project</h1>
+
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <button type="submit" class="btn btn-info">Save</button>
+        {% if project != None %}
+        <a href="{% url 'project_info' project %}" class="btn btn-danger">Cancel</a>
+        {% else %}
+        <a href="{% url 'get_projects' %}" class="btn btn-danger">Cancel</a>
+        {% endif %}
     </form>
 {% endblock %}

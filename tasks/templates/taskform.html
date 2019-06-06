@@ -6,5 +6,12 @@
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <button type="submit" class="btn btn-info">Save</button>
+        {% if task != None %}
+        <a href="{% url 'task_info' task project %}" class="btn btn-danger">Cancel</a>
+        {% else %}
+        <a href="{% url 'view_only' project %}" class="btn btn-danger">Cancel</a>
+        {% endif %}
     </form>
+    
 {% endblock %}
+
