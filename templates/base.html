@@ -32,8 +32,8 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'get_projects' %}">Projects</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                     <li><a href="{% url 'register' %}">Register</a></li>

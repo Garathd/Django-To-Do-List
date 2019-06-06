@@ -6,12 +6,36 @@
     </div>
 </div>
 
+<!-- Change from inline CSS -->
+<h1 align="center"><strong>Project:</strong> {{project}}</h1>
+
 <div class="row">
     <div class="col-md-12">
         <h3 class="create"><span><a href="{% url 'create_task' project_id %}">Create a new Task</a></span></h3>
     </div>
 </div>
+
 &nbsp;
+<div class="row">
+    <div class="col-md-10 col-sm-12"></div>
+    <div class="col-md-2 col-sm-12">
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <select name="search" class="form-control">
+              <option value="all" default>Show All</option>
+              <option value="hpriority" >High Priority</option>
+              <option value="mpriority" >Medium Priority</option>
+              <option value="lpriority" >Low Priority</option>
+              <option value="todo">To Do</option>
+              <option value="progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+            <input id="search_button" class="btn btn-primary" type="submit" value="Search" />
+        </form>
+    </div>
+</div>
+&nbsp;
+
 <div class="row">
     {% for task in tasks %}
     <div class="col-md-4">

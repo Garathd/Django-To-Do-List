@@ -88,12 +88,52 @@ def view_only(request, pk=None):
     
     for p in project:
         project_name = p.name
+        
+    #Check if user used the select option
+    if request.method == "POST":
 
-    return render(request, "project_tasks.html", {
-        'tasks': tasks,
-        'project_id': pk,
-        'project': project_name
-    })
+        """ 
+        This is for the filtered select option
+        on the tasks page
+        """
+        search_select = request.POST['search']
+        
+        if search_select == 'all':
+            tasks = Task.objects.filter(project=project)
 
+        if search_select == 'hpriority':
+            tasks = Task.objects.filter(priority='High', project=project)
 
-    
+        if search_select == 'mpriority':
+            tasks = Task.objects.filter(priority='Medium', project=project)
+
+        if search_select == 'lpriority':
+            tasks = Task.objects.filter(priority='Low', project=project)
+
+        if search_select == 'todo':
+            tasks = Task.objects.filter(status='To Do', project=project)
+
+        if search_select == 'progress':
+            tasks = Task.objects.filter(status='In Progress', project=project)
+
+        if search_select == 'done':
+            tasks = Task.objects.filter(status='Done', project=project)
+
+        """ 
+        What ever is choosen in the select box 
+        is no filtered and resend to tasks page
+        """
+        return render(request, "project_tasks.html", {
+            'tasks': tasks,
+            'project_id': pk,
+            'project': project_name
+        })
+        
+    else:
+        tasks = Task.objects.filter(project=project)
+        return render(request, "project_tasks.html", {
+            'tasks': tasks,
+            'project_id': pk,
+            'project': project_name
+        })    
+
