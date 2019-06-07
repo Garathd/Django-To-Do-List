@@ -13,6 +13,7 @@
         <p><span class="boldtext">Description:</span> {{ project.description }}</p>
         <p><span class="boldtext">Type:</span> {{ project.status }}</p>
         <p><span class="boldtext">User:</span> {{ project.user }}</p>
+        <p><span class="boldtext">Published on:</span> {{ project.published_date }} </p>
         <hr />
         <a href="{% url 'edit_project' project.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
         <a href="{% url 'delete_project' project.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>

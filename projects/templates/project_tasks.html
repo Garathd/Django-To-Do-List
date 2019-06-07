@@ -49,6 +49,12 @@
         {% elif task.priority == 'Low' %}
         <p style="color:green; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
         {% endif %}
+        
+        {% if task.screenshot %}
+        <p><span class="boldtext">Screenshot:</span> Yes</p>
+        {% else %}
+        <p><span class="boldtext">Screenshot:</span> No</p>
+        {% endif %}
         <p><a href="{% url 'task_info' task.id project_id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> More...</a></p>
         <hr />
     </div>
