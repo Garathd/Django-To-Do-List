@@ -20,6 +20,8 @@ from projects import urls as urls_projects
 from tasks import urls as urls_tasks
 from dashboard.views import dashboard_view
 from home.views import index
+from .settings import MEDIA_ROOT
+from django.views.static import serve
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,4 +30,5 @@ urlpatterns = [
     url(r'^dashboard/', dashboard_view, name='dashboard'),
     url(r'^projects/', include(urls_projects)),
     url(r'^tasks/', include(urls_tasks)),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT }),
 ]

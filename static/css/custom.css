@@ -33,3 +33,8 @@
 .create > span > a{
     text-decoration: underline !important;
 }
+
+/*For Image Upload Field*/
+input[name="screenshot"] {
+    padding-bottom: 47px !important;
+}

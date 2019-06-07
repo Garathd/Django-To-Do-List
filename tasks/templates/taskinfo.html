@@ -6,6 +6,9 @@
         <p><span class="boldtext">Status:</span> {{ task.status }}</p>
         <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
         <p><span class="boldtext">Project:</span> {{ task.project }}</p>
+        {% if task.screenshot %}
+                <img class="img-blogpost" src="/media/{{ task.screenshot }}">
+            {% endif %}
         <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
         <hr />
         <a href="{% url 'view_only' project %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
