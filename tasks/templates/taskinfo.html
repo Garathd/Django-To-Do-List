@@ -1,15 +1,23 @@
 {% extends 'base.html' %} {% block content %}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <p><span class="boldtext">Name:</span> {{task.name}}</p>
         <p><span class="boldtext">Description:</span> {{ task.description }}</p>
         <p><span class="boldtext">Status:</span> {{ task.status }}</p>
         <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
         <p><span class="boldtext">Project:</span> {{ task.project }}</p>
-        {% if task.screenshot %}
-                <img class="img-blogpost" src="/media/{{ task.screenshot }}">
-            {% endif %}
         <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
+    </div>
+    <div class="col-md-6">
+        {% if task.screenshot %}
+        <div class="screenshot-container">
+            <a href="{{ MEDIA_URL }}{{ task.screenshot }}" target="_blank">
+                <img class="screenshot" src="{{ MEDIA_URL }}{{ task.screenshot }}">
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-md-12">
         <hr />
         <a href="{% url 'view_only' project %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
         <a href="{% url 'edit_task' task.id project %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>

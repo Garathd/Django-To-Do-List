@@ -38,3 +38,7 @@
 input[name="screenshot"] {
     padding-bottom: 47px !important;
 }
+
+.screenshot{
+    width: 250px !important;
+}
