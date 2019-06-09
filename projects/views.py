@@ -3,6 +3,7 @@ from django.core.urlresolvers import resolve
 from django.contrib.auth.decorators import login_required
 from .models import Project
 from tasks.models import Task
+from accounts.models import UserProfile
 from .forms import ProjectForm
 
 # Create your views here.
@@ -49,7 +50,16 @@ def project_info(request, pk):
     
     project = get_object_or_404(Project, pk=pk)
     project.save()
-    return render(request, "projectinfo.html", {'project': project})
+    
+    user_info = UserProfile.objects.filter(user=request.user)
+    
+    for u in user_info:
+        picture = u.picture
+    
+    return render(request, "projectinfo.html", {
+        'project': project,
+        'picture': picture
+    })
     
 @login_required()  
 #Edit or Create a Project

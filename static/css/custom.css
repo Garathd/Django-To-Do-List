@@ -38,6 +38,10 @@
     text-align: center;
 }
 
+.user_image{
+    width: 40px !important;
+}
+
 /*For Image Upload Field*/
 input[name="screenshot"], input[name="picture"] {
     padding-bottom: 47px !important;
