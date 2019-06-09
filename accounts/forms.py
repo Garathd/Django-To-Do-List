@@ -8,7 +8,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ['picture']
+        fields = ['description', 'picture']
         
 
 class UserLoginForm(forms.Form):

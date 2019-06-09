@@ -1,20 +1,29 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %} 
 
-    {% for i in info %}
+{% for i in info %}
 
     <h1 class="center">Profile</h1>
+    
+    {% if i.picture == None %}
+    <p><strong>Picture: </strong> None</p>
+    {% else %} 
     <div class="screenshot-container">
-            <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
-                <img class="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
-            </a>
-        </div>
-    <br>
+        <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
+            <img class="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
+        </a>
+    </div>
+    <br />
+    {% endif %}
+    
     <p><strong>Username: </strong> {{ i.user }}</p>
     <p><strong>Email: </strong> {{ user.email }}</p>
     
-    <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-
+    {% if i.description != None %}
+    <p><strong>Description: </strong> {{ i.description }}</p>
+    {% else %}
+    <p><strong>Description: </strong> None</p>
+    {% endif %}
     
-    {% endfor %}
+    <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
+{% endfor %} 
 {% endblock %}
