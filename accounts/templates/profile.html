@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
-    <h2>Success!</h2>
-    <p>You are logged in as {{ user.email }} </p>
+
+    {% for i in info %}
+
+    <h1 class="center">Profile</h1>
+    <div class="screenshot-container">
+            <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
+                <img class="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
+            </a>
+        </div>
+    <br>
+    <p><strong>Username: </strong> {{ i.user }}</p>
+    <p><strong>Email: </strong> {{ user.email }}</p>
+    
+    <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+
+    
+    {% endfor %}
 {% endblock %}

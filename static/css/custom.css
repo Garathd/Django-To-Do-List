@@ -34,8 +34,12 @@
     text-decoration: underline !important;
 }
 
+.center{
+    text-align: center;
+}
+
 /*For Image Upload Field*/
-input[name="screenshot"] {
+input[name="screenshot"], input[name="picture"] {
     padding-bottom: 47px !important;
 }
 

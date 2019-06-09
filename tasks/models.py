@@ -23,7 +23,7 @@ class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, blank=False, null=True)
     status = models.CharField(max_length=40, choices=status, default='To Do')
     priority = models.CharField(max_length=40, choices=priority, default='Low')
-    screenshot = models.ImageField(upload_to="img", blank=True, null=True)
+    screenshot = models.ImageField(upload_to="img/tasks", blank=True, null=True)
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
     
     def __str__(self):

@@ -5,51 +5,6 @@ from .models import Task
 from projects.models import Project
 from .forms import TaskForm
 from django.utils import timezone
-
-# login_required()
-# #Get all Projects
-# def get_tasks(request):
-
-#     #Check if user used the select option
-#     if request.method == "POST":
-
-#         """ 
-#         This is for the filtered select option
-#         on the tasks page
-#         """
-#         search_select = request.POST['search']
-        
-#         if search_select == 'all':
-#             tasks = Task.objects.filter(project__user=request.user)
-
-#         if search_select == 'hpriority':
-#             tasks = Task.objects.filter(priority='High', project__user=request.user)
-
-#         if search_select == 'mpriority':
-#             tasks = Task.objects.filter(priority='Medium', project__user=request.user)
-
-#         if search_select == 'lpriority':
-#             tasks = Task.objects.filter(priority='Low', project__user=request.user)
-
-#         if search_select == 'todo':
-#             tasks = Task.objects.filter(status='To Do', project__user=request.user)
-            
-#         if search_select == 'progress':
-#             tasks = Task.objects.filter(status='In Progress', project__user=request.user)
-            
-#         if search_select == 'done':
-#             tasks = Task.objects.filter(status='Done', project__user=request.user)
-        
-#         """ 
-#         What ever is choosen in the select box 
-#         is no filtered and resend to tasks page
-#         """
-#         return render(request, "tasks.html", {'tasks': tasks})
-        
-#     else:
-#         tasks = Task.objects.filter(project__user=request.user)
-#         return render(request, "tasks.html", {'tasks': tasks})
-        
         
 @login_required()
 #Get Task Information
