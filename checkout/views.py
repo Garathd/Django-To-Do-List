@@ -13,19 +13,20 @@ from accounts.forms import UserProfileForm
 import stripe
 
 
-# Create your  {views here.
-
+# Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
-print("stripe.api_keyssss: {}".format(stripe.api_key))
 
 @login_required()
 def checkout(request):
     
+    cart = request.session.get('cart')
+    
+    # If cart is empty the redirect to profile page
+    if not cart:
+        return redirect(reverse('profile'))
+    
     if request.method=="POST":
-        
-        value = request.POST
-        print("value: {}".format(value))
-        
+
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
         
@@ -63,7 +64,6 @@ def checkout(request):
                 profile = get_object_or_404(UserProfile, user=request.user) 
                 
                 preserve_description = profile.description
-                print("Check Preserve: {}".format(preserve_description))
 
                 if request.method == "POST":
                     form = UserProfileForm(request.POST, request.FILES, instance=profile)
@@ -78,7 +78,6 @@ def checkout(request):
             else:
                 messages.error(request, "Unable to take payment")
         else:
-            print(payment_form.errors)
             messages.error(request, "We were unable to take a payment with that card!")
     else:
         payment_form = MakePaymentForm()

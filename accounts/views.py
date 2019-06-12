@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 from accounts.models import UserProfile, create_or_update_user_profile
 from accounts.forms import UserProfileForm
 
+from projects.models import Project
+from tasks.models import Task
+
 
 # Create your views here.
 def index(request):
@@ -52,9 +55,22 @@ def profile(request):
 
     info = UserProfile.objects.filter(user=request.user)
     
+    # Calculate the total projects and tasks
+    project_count = 0
+    task_count = 0
+    projects = Project.objects.filter(user__username=request.user)
+
+    for p in projects:
+        task = Task.objects.filter(project=p).count()
+        project_count = project_count + 1
+        task_count = task_count + task
+
+    
     """A view that displays the profile page of a logged in user"""
     return render(request, 'profile.html', {
-        'info': info
+        'info': info,
+        'project_count': project_count,
+        'task_count': task_count,
     })
 
 

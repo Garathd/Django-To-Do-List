@@ -1,31 +1,45 @@
-{% extends "base.html" %} {% block content %} 
+{% extends "base.html" %} {% block content %} {% for i in info %}
 
-{% for i in info %}
+<h1 class="center">Profile</h1>
 
-    <h1 class="center">Profile</h1>
-    
-    {% if i.picture == None %}
-    <p><strong>Picture: </strong> None</p>
-    {% else %} 
-    <div class="screenshot-container">
-        <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
+<div class="row">
+    <div class="col-md-3">
+        {% if i.picture %} 
+        <div class="screenshot-container">
+            <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
             <img class="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
         </a>
+        </div>
+        <br /> 
+        {% else %} 
+        <div class="screenshot-container">
+            <a href="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png" target="_blank">
+            <img class="screenshot" src="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png">
+        </a>
+        </div>
+        <br />
+        {% endif %}
     </div>
-    <br />
-    {% endif %}
-    
-    
-    <p><strong>Username: </strong> {{ i.user }}</p>
-    <p><strong>Email: </strong> {{ user.email }}</p>
-    <p><strong>Account: </strong> {{ i.account }}</p>
-    
-    {% if i.description != None %}
-    <p><strong>Description: </strong> {{ i.description }}</p>
-    {% else %}
-    <p><strong>Description: </strong> None</p>
-    {% endif %}
-    
-    <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a> 
-{% endfor %} 
-{% endblock %}
+
+    <div class="col-md-9">
+        <p><strong>Username: </strong> {{ i.user }}</p>
+        <p><strong>Email: </strong> {{ user.email }}</p>
+
+        {% if i.description != None %}
+        <p><strong>Description: </strong> {{ i.description }}</p>
+        {% else %}
+        <p><strong>Description: </strong> None</p>
+        {% endif %}
+
+        <p><strong>Account Type: </strong> {{ i.account }}</p>
+        <p><strong>Current Projects: </strong> {{ project_count }}</p>
+        <p><strong>Current Tasks: </strong> {{ task_count }}</p>
+
+        <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+        {% if i.account == 'free' %}
+        <a href="{% url 'products' %}" class="btn btn-default"><span class="glyphicon glyphicon-euro"></span> Buy Pro Version</a> 
+        {% endif %}
+        {% endfor %} 
+    {% endblock %}
+    </div>
+</div>

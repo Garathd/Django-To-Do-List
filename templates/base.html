@@ -37,16 +37,16 @@
                     <li><a href="{% url 'get_projects' %}">Projects</a></li>
                     <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    <!-- ############## -->
-                    <li>
-                        <a href="{% url 'view_cart' %}">
-                            <i class="fa fa-shipping-cart"></i>Cart
-                            {% if product_count > 0 %}
-                            <label class="badge badge-warning">{{ product_count }}</label>
-                            {% endif %}
-                        </a>
-                    </li>
-                    <!-- ############## -->
+                        {% if product_count > 0 %}
+                        <li>
+                            <a href="{% url 'view_cart' %}">
+                                <i class="fa fa-shipping-cart"></i>Cart
+                                
+                                <label class="badge badge-warning">{{ product_count }}</label>
+                                
+                            </a>
+                        </li>
+                        {% endif %}
                     {% else %}
                     <li><a href="{% url 'register' %}">Register</a></li>
                     <!--<li><a href="{% url 'login' %}">Log In</a></li>-->
