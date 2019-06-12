@@ -10,6 +10,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     description = models.CharField(max_length=255, blank=True, null=True)
     picture = models.ImageField(upload_to="img/user", blank=True, null=True)
+    account = models.CharField(max_length=40, default='free')
     
 
 @receiver(post_save, sender=User)

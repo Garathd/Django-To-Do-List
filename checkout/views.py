@@ -6,6 +6,10 @@ from .models import OrderLineItem
 from django.conf import settings
 from django.utils import timezone
 from products.models import Product
+
+from accounts.models import UserProfile, create_or_update_user_profile
+from accounts.forms import UserProfileForm
+
 import stripe
 
 
@@ -53,8 +57,23 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
                 
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                messages.error(request, "You have successfully paid for Pro Version")
                 request.session['cart'] = {}
+                
+                profile = get_object_or_404(UserProfile, user=request.user) 
+                
+                preserve_description = profile.description
+                print("Check Preserve: {}".format(preserve_description))
+
+                if request.method == "POST":
+                    form = UserProfileForm(request.POST, request.FILES, instance=profile)
+                    if form.is_valid():
+                        profile = form.save(commit=False)
+                        profile.description = preserve_description
+                        profile.account = "pro"
+                        profile.save()
+                        return redirect(reverse('profile'))
+                
                 return redirect(reverse('products'))
             else:
                 messages.error(request, "Unable to take payment")
