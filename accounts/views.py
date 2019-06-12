@@ -40,7 +40,7 @@ def login(request):
                     next = request.GET['next']
                     return HttpResponseRedirect(next)
                 else:
-                    return redirect(reverse('get_projects'))
+                    return redirect(reverse('dashboard'))
             else:
                 user_form.add_error(None, "Your username or password are incorrect")
     else:

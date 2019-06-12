@@ -29,6 +29,16 @@
 <div class="row">
     {% for project in projects %}
     <div class="col-md-4">
+        <div class="project-icon">
+            {% if project.status == 'Work' %}
+            <i class="fas fa-briefcase"></i>
+            {% elif project.status == 'Education' %}
+            <i class="fas fa-graduation-cap"></i>
+            {% elif project.status == 'Personal' %}
+            <i class="fas fa-users"></i>
+            {% endif %}
+            &nbsp;
+        </div>
         <p><span class="boldtext">Name:</span> {{project.name}}</p>
         <p><span class="boldtext">Type:</span> {{ project.status }}</p>
         <p>

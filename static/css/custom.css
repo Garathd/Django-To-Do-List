@@ -58,3 +58,12 @@ input[name="screenshot"], input[name="picture"] {
 .screenshot{
     width: 250px !important;
 }
+
+.project-icon > .fas{
+    font-size: 3em !important;
+    margin-bottom: 1% !important;
+}
+
+.featured-break{
+    margin-bottom: 4.4% !important;
+}
