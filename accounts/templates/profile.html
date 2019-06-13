@@ -1,6 +1,15 @@
 {% extends "base.html" %} {% block content %} {% for i in info %}
 
-<h1 class="center">Profile</h1>
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'dashboard' %}">Home</a> / 
+        Profile
+        <hr />
+    </div>
+</div>
+
+<h1 class="center">Profile Page</h1>
+&nbsp;
 
 <div class="row">
     <div class="col-md-3">

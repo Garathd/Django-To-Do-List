@@ -15,8 +15,8 @@ import dj_database_url
 import env
 
 
-if os.environ.get('C9_HOSTNAME') == 'django-project-garath.c9users.io':
-    import env
+awsc9host = '34.244.226.111'
+localurl = "d2d4e75b75f44ab88dda3bc6e45596c0.vfs.cloud9.eu-west-1.amazonaws.com"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -31,8 +31,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['django-project-garath.c9users.io']
-
+ALLOWED_HOSTS = [
+    'django-project-garath.c9users.io',
+    localurl
+    ]
 
 # Application definition
 

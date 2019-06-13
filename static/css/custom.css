@@ -64,6 +64,15 @@ input[name="screenshot"], input[name="picture"] {
     margin-bottom: 1% !important;
 }
 
+.project-view-icon > .fas{
+    font-size: 9em !important;
+    margin-bottom: 1% !important;
+}
+
 .featured-break{
     margin-bottom: 4.4% !important;
+}
+
+hr{
+    border-top: 1px solid #ccc !important; 
 }

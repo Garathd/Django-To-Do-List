@@ -2,26 +2,34 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'view_only' project %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+        <a href="{% url 'dashboard' %}">Home</a> /
+        <a href="{% url 'get_projects' %}"> Projects</a> /
+        <a href="{% url 'view_only' project %}">{{task.project}}</a> / {{ task.name }}
+        <hr />
     </div>
 </div>
 
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <p><span class="boldtext">Name:</span> {{task.name}}</p>
-        <p><span class="boldtext">Description:</span> {{ task.description }}</p>
-        <p><span class="boldtext">Status:</span> {{ task.status }}</p>
-        <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
-        <p><span class="boldtext">Project:</span> {{ task.project }}</p>
-        <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
+    <div class="col-md-3">
         {% if task.screenshot %}
         <div class="screenshot-container">
             <a href="{{ MEDIA_URL }}{{ task.screenshot }}" target="_blank">
                 <img class="screenshot" src="{{ MEDIA_URL }}{{ task.screenshot }}">
             </a>
         </div>
+        {% else %}
+        <div class="screenshot-container">
+                <img class="screenshot" src="{{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png">
+        </div>
         {% endif %}
+    </div>
+    <div class="col-md-7">
+        <p><span class="boldtext">Name:</span> {{task.name}}</p>
+        <p><span class="boldtext">Description:</span> {{ task.description }}</p>
+        <p><span class="boldtext">Status:</span> {{ task.status }}</p>
+        <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
+        <p><span class="boldtext">Project:</span> {{ task.project }}</p>
+        <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
         <hr />
         <a href="{% url 'edit_task' task.id project %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
         <a href="{% url 'delete_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>

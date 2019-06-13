@@ -60,8 +60,8 @@
                 <h6>Personal:</h6>
                 <p class="font-weight-bold">{{ personal }}</p>
 
-                <p><a href="#" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> View Projects</a></p>
-                <p><a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Create Project</a></p>
+                <p><a href="{% url 'get_projects' %}" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> View Projects</a></p>
+                <p><a href="{% url 'create_project' %}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Create Project</a></p>
             </div>
         </div>
         <hr/>

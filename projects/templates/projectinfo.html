@@ -1,18 +1,26 @@
 {% extends 'base.html' %} {% block content %}
-
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'get_projects' %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+        <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project.name}}
+        <hr />
     </div>
 </div>
-
+&nbsp;
 <div class="row">
-    <div class="col-md-2"></div>
+    <div class="col-md-2">
+        <div class="project-view-icon">
+            {% if project.status == 'Work' %}
+            <i class="fas fa-briefcase"></i> {% elif project.status == 'Education' %}
+            <i class="fas fa-graduation-cap"></i> {% elif project.status == 'Personal' %}
+            <i class="fas fa-users"></i> {% endif %} &nbsp;
+        </div>
+        <br />
+    </div>
     <div class="col-md-8">
         <p><span class="boldtext">Name: </span> {{ project.name}}</p>
         <p><span class="boldtext">Description: </span> {{ project.description }}</p>
         <p><span class="boldtext">Type: </span> {{ project.status }}</p>
-        <p><span class="boldtext">User: </span> {{ project.user }} 
+        <p><span class="boldtext">User: </span> {{ project.user }}
         </p>
         <p><span class="boldtext">Published on: </span> {{ project.published_date }} </p>
         <hr />
