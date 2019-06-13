@@ -59,6 +59,11 @@ input[name="screenshot"], input[name="picture"] {
     width: 250px !important;
 }
 
+.project-icon{
+    float: left;
+    padding-right: 1.5%;
+}
+
 .project-icon > .fas{
     font-size: 3em !important;
     margin-bottom: 1% !important;
@@ -67,6 +72,11 @@ input[name="screenshot"], input[name="picture"] {
 .project-view-icon > .fas{
     font-size: 9em !important;
     margin-bottom: 1% !important;
+}
+
+.no-content > .far{
+    font-size: 7em !important;
+    margin: 2% 0 !important;
 }
 
 .featured-break{

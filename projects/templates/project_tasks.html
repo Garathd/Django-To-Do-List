@@ -1,14 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
-<!--<div class="row">-->
-<!--    <div class="col-md-12">-->
-<!--        <a href="{% url 'get_projects' %}" class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>-->
-<!--    </div>-->
-<!--</div>-->
-
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project}}
+        <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project }}
         <hr />
     </div>
 </div>
@@ -21,7 +15,7 @@
     </div>
 </div>
 
-&nbsp;
+&nbsp; {% if tasks %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -40,10 +34,10 @@
         </form>
     </div>
 </div>
-&nbsp;
+&nbsp; {% endif %}
 
 <div class="row">
-    {% for task in tasks %}
+    {% if tasks %} {% for task in tasks %}
     <div class="col-md-4">
         <p><span class="boldtext">Name:</span> {{task.name}}</p>
         <p><span class="boldtext">Project:</span> {{ task.project }}</p>
@@ -54,9 +48,7 @@
         <p style="color:orange; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
         {% elif task.priority == 'Low' %}
         <p style="color:green; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
-        {% endif %}
-        
-        {% if task.screenshot %}
+        {% endif %} {% if task.screenshot %}
         <p><span class="boldtext">Screenshot:</span> Yes</p>
         {% else %}
         <p><span class="boldtext">Screenshot:</span> No</p>
@@ -64,6 +56,13 @@
         <p><a href="{% url 'task_info' task.id project_id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> More...</a></p>
         <hr />
     </div>
-    {% endfor %}
+    {% endfor %} {% else %}
+    <div class="col-md-12">
+        <div class="no-content center">
+            <i class="far fa-smile"></i>
+            <h4>You have no Tasks. Please add a task...</h4>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

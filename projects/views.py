@@ -72,7 +72,9 @@ def create_or_edit_project(request, pk=None):
             project = form.save(commit=False)
             project.user = request.user
             project.save()
-            return redirect(reverse('get_projects'))
+            return redirect(reverse('project_info', kwargs={
+                'pk': project.id 
+            }))
     else:
         form = ProjectForm(instance=project)
     return render(request, 'projectform.html', {

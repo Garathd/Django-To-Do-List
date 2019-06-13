@@ -16,6 +16,7 @@
     <hr />
 </div>
 
+{% if projects %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -31,30 +32,37 @@
         </form>
     </div>
 </div>
+{% endif %} &nbsp;
 
-&nbsp;
 
 <div class="row">
-    {% for project in projects %}
+
+    {% if projects %} {% for project in projects %}
+
     <div class="col-md-4">
         <div class="project-icon">
             {% if project.status == 'Work' %}
-            <i class="fas fa-briefcase"></i>
-            {% elif project.status == 'Education' %}
-            <i class="fas fa-graduation-cap"></i>
-            {% elif project.status == 'Personal' %}
-            <i class="fas fa-users"></i>
-            {% endif %}
-            &nbsp;
+            <i class="fas fa-briefcase"></i> {% elif project.status == 'Education' %}
+            <i class="fas fa-graduation-cap"></i> {% elif project.status == 'Personal' %}
+            <i class="fas fa-users"></i> {% endif %} &nbsp;
         </div>
-        <p><span class="boldtext">Name:</span> {{project.name}}</p>
-        <p><span class="boldtext">Type:</span> {{ project.status }}</p>
+        <div class="project-info">
+            <p><span class="boldtext">Name:</span> {{project.name}}</p>
+            <p><span class="boldtext">Type:</span> {{ project.status }}</p>
+        </div>
         <p>
             <a href="{% url 'project_info' project.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
             <a href="{% url 'view_only' project.id %}" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> Tasks</a>
         </p>
         <hr />
     </div>
-    {% endfor %}
+    {% endfor %} {% else %}
+    <div class="col-md-12">
+        <div class="no-content center">
+            <i class="far fa-smile"></i>
+            <h4>You have no Projects. Please add a project...</h4>
+        </div>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
