@@ -35,7 +35,10 @@ def create_or_edit_task(request, pk=None, project=None):
             if project != None:
                 task.project = project_instance
             task.save()
-            return redirect(reverse('get_projects'))
+            return redirect(reverse('task_info', kwargs={
+                'project': project,
+                'pk': task.id 
+            }))
     else:
         form = TaskForm(instance=task)
     return render(request, 'taskform.html', {
