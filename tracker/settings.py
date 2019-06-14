@@ -15,10 +15,8 @@ import dj_database_url
 
 hostname = os.environ.get('C9_HOSTNAME')
 
-if hostname == "63.33.49.227":
+if hostname:
     import env
-
-print("hostname: {}".format(hostname))
 
 localurl = "d2d4e75b75f44ab88dda3bc6e45596c0.vfs.cloud9.eu-west-1.amazonaws.com"
 
