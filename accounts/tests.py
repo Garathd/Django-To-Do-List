@@ -1,9 +1,7 @@
-from django.test import TestCase
-from django.http import QueryDict
-from django.contrib.auth.models import User
+from django.test import TestCase, Client
 from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from .models import UserProfile
-
+from .client import Login
 
 # Tests for all the accounts forms
 class AccountFormTests(TestCase):
@@ -53,7 +51,10 @@ class AccountModelTests(TestCase):
 
 # Tests for all the accounts views          
 class AccountViewTests(TestCase):
-        
+    
+    # This runs a testing client
+    c=Client()
+    
     # Testing the register view  
     def test_register_view(self):
         page = self.client.get("/accounts/register/")
@@ -67,8 +68,18 @@ class AccountViewTests(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "login.html")
         
-    
+
     # Testing the profile view  
     def test_profile_view(self):
-        page = self.client.get("/accounts/profile/")
-        self.assertEqual(page.status_code, 302)
+        Login.setUp(self)
+        page = self.c.get("/accounts/profile/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "profile.html")
+        
+    
+     # Testing the profile view  
+    def test_edit_profile_view(self):
+        Login.setUp(self)
+        page = self.c.get("/accounts/edit_profile/")
+        self.assertEqual(page.status_code, 200)
+        self.assertTemplateUsed(page, "profileform.html")
