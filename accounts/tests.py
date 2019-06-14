@@ -68,7 +68,7 @@ class AccountViewTests(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "login.html")
         
-
+        
     # Testing the profile view  
     def test_profile_view(self):
         Login.setUp(self)
