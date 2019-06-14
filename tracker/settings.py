@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-import env
+# import env
 
 
 awsc9host = '34.244.226.111'
