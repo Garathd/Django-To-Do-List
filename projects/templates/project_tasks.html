@@ -7,6 +7,15 @@
     </div>
 </div>
 
+{% if result %}
+<div class="alert alert-danger">
+    <div class="messages">
+        The trial version allows the creation of only 3 Tasks. Please buy the Pro Version from your profile page
+        <!--{% for message in messages %} {{ message }} {% endfor %}-->
+    </div>
+</div>
+{% endif %}
+
 <h1 class="center"><strong>Project:</strong> {{project}}</h1>
 
 <div class="row">

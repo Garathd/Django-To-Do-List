@@ -83,8 +83,8 @@ def create_or_edit_project(request, pk=None):
         if account_type == "free" and project_count >= 1 and pk == None:
 
             return render(request,'projects.html',{
-                "projects": projects,
-                "result": "trial"
+                'projects': projects,
+                'result': "trial"
             })
         else:
 
