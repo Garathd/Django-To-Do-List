@@ -12,10 +12,14 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import dj_database_url
-# import env
 
+hostname = os.environ.get('C9_HOSTNAME')
 
-awsc9host = '34.244.226.111'
+if hostname == "63.33.49.227":
+    import env
+
+print("hostname: {}".format(hostname))
+
 localurl = "d2d4e75b75f44ab88dda3bc6e45596c0.vfs.cloud9.eu-west-1.amazonaws.com"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
