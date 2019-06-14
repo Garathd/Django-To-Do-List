@@ -65,16 +65,37 @@ def project_info(request, pk):
 #Edit or Create a Project
 def create_or_edit_project(request, pk=None):
     
+    project_count = 0
+    account_type = ""
+    
+    info = UserProfile.objects.filter(user=request.user)
+    for i in info:
+        account_type = i.account
+        
+    projects = Project.objects.filter(user__username=request.user)
+
+    for p in projects:
+        project_count = project_count + 1
+
     project = get_object_or_404(Project, pk=pk) if pk else None
     if request.method == "POST":
-        form = ProjectForm(request.POST, request.FILES, instance=project)
-        if form.is_valid():
-            project = form.save(commit=False)
-            project.user = request.user
-            project.save()
-            return redirect(reverse('project_info', kwargs={
-                'pk': project.id 
-            }))
+        
+        if account_type == "free" and project_count >= 1 and pk == None:
+
+            return render(request,'projects.html',{
+                "projects": projects,
+                "result": "trial"
+            })
+        else:
+
+            form = ProjectForm(request.POST, request.FILES, instance=project)
+            if form.is_valid():
+                project = form.save(commit=False)
+                project.user = request.user
+                project.save()
+                return redirect(reverse('project_info', kwargs={
+                    'pk': project.id 
+                }))
     else:
         form = ProjectForm(instance=project)
     return render(request, 'projectform.html', {

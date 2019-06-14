@@ -7,7 +7,19 @@
     </div>
 </div>
 
+{% if result %}
+<div class="alert alert-danger">
+    <div class="messages">
+        The trial version allows the creation of only 1 Project. Please buy the Pro Version from your profile page
+        <!--{% for message in messages %} {{ message }} {% endfor %}-->
+    </div>
+</div>
+{% endif %}
+
+
+
 <h1 class="center">Projects Page</h1>
+
 
 <div class="row">
     <div class="col-md-12">
@@ -15,6 +27,7 @@
     </div>
     <hr />
 </div>
+
 
 {% if projects %}
 <div class="row">
