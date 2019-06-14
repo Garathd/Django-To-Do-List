@@ -6,28 +6,27 @@ from django.contrib.auth.models import User
 
 from accounts.models import UserProfile
 
-
-# INLINES, FOR EDITING ONE MODEL WITHIN ANOTHER ADMIN PAGE:
+# Inlines, for editing one model within another admin page
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     can_delete = False
     verbose_name_plural = 'User Profile'
+    
 
-
-# CUSTOM USER ADMIN:
+# Custom User Admin:
 class UserAdmin(BaseUserAdmin):
 
 	inlines = (UserProfileInline,)
 	list_display = ('username', 'first_name', 'last_name', 'date_joined', 'last_login')
 
 
-# ADMIN FOR USER PROFILE:
+# Admin for User Profile:
 class UserProfileAdmin(admin.ModelAdmin):
     
 	list_display = ('user',)
 	
 
-# REGISTER ALL CUSTOM ADMINS:
+# Register all custom Admin:
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(UserProfile, UserProfileAdmin)

@@ -11,12 +11,6 @@ from projects.models import Project
 from tasks.models import Task
 
 
-# Create your views here.
-def index(request):
-    """A view that displays the index page"""
-    return render(request, "index.html")
-
-
 def logout(request):
     """A view that logs the user out and redirects back to the index page"""
     auth.logout(request)
@@ -53,12 +47,15 @@ def login(request):
 @login_required
 def profile(request):
 
+    # Get data for logged in user
     info = UserProfile.objects.filter(user=request.user)
     
-    # Calculate the total projects and tasks
+    # Get projects for current user
+    projects = Project.objects.filter(user__username=request.user)
+
+    # Calculate the total projects and tasks for logged in user
     project_count = 0
     task_count = 0
-    projects = Project.objects.filter(user__username=request.user)
 
     for p in projects:
         task = Task.objects.filter(project=p).count()
@@ -76,6 +73,7 @@ def profile(request):
 
 def edit_profile(request, pk=None):
 
+    # Get user profile details
     profile = get_object_or_404(UserProfile, user=request.user) 
 
     if request.method == "POST":
@@ -90,8 +88,8 @@ def edit_profile(request, pk=None):
     })
 
 
-
 def register(request):
+ 
     """A view that manages the registration form"""
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)

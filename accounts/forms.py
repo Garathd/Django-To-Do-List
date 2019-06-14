@@ -4,18 +4,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from accounts.models import UserProfile
 
+# UserProfile form which lets users update there profile
 class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
         fields = ['description', 'picture']
         
-
+# UserLogin form which lets users log in to the website
 class UserLoginForm(forms.Form):
     username_or_email = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-
+# UserRegistration form which lets users log in to the website
 class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(
