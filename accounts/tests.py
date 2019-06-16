@@ -3,7 +3,10 @@ from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from .models import UserProfile
 from .client import Login
 
-# Tests for all the accounts forms
+
+"""
+Tests for all the accounts forms
+"""
 class AccountFormTests(TestCase):
 
     # Testing account login form
@@ -36,7 +39,9 @@ class AccountFormTests(TestCase):
         self.assertTrue(form.is_valid())
         
 
-# Tests for all the accounts models        
+"""
+Tests for all the accounts models        
+"""
 class AccountModelTests(TestCase):
     
     # Testing the user profile model
@@ -49,7 +54,9 @@ class AccountModelTests(TestCase):
         self.assertEqual(profile.description, "Example Description")
         
 
-# Tests for all the accounts views          
+"""
+Tests for all the accounts views
+"""
 class AccountViewTests(TestCase):
     
     # This runs a testing client

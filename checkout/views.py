@@ -16,9 +16,13 @@ import stripe
 # Create your views here.
 stripe.api_key = settings.STRIPE_SECRET
 
+
+"""
+Brings the user to the checkout
+"""
 @login_required()
 def checkout(request):
-    
+
     cart = request.session.get('cart')
     
     # If cart is empty the redirect to profile page
@@ -26,7 +30,7 @@ def checkout(request):
         return redirect(reverse('profile'))
     
     if request.method=="POST":
-
+        
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
         

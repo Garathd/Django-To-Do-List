@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, reverse
 
-# Create your views here.
+
+"""
+View the Cart
+"""
 def view_cart(request):
     
     cart = request.session.get('cart')
@@ -11,10 +14,13 @@ def view_cart(request):
     
     """A View that renders the cart contents page"""
     return render(request, "cart.html")
-
-
+    
+    
+"""
+Add a quantity of the specified product to the cart
+"""
 def add_to_cart(request, id):
-    """Add a quantity of the specified product to the cart"""
+    
     
     cart = request.session.get('cart')
     
@@ -36,11 +42,13 @@ def add_to_cart(request, id):
     return redirect(reverse('checkout'))
 
 
+"""
+Adjust the quantity of the specified product to the specified
+amount. I have it to set to 0 if a user delete which is only 
+way to adjust
+"""
 def adjust_cart(request, id):
-    """
-    Adjust the quantity of the specified product to the specified
-    amount
-    """
+
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 

@@ -1,6 +1,10 @@
 from django.test import Client
 from .forms import UserRegistrationForm
 
+"""
+This is used to simulate a logged in user
+"""
+
 class Login:
     
     c = Client()

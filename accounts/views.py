@@ -11,15 +11,19 @@ from projects.models import Project
 from tasks.models import Task
 
 
+"""
+A view that logs the user out and redirects back to the index page
+"""
 def logout(request):
-    """A view that logs the user out and redirects back to the index page"""
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect(reverse('index'))
 
 
+"""
+A view that manages the login form
+"""
 def login(request):
-    """A view that manages the login form"""
     if request.method == 'POST':
         user_form = UserLoginForm(request.POST)
         if user_form.is_valid():
@@ -44,6 +48,9 @@ def login(request):
     return render(request, 'login.html', args)
 
 
+"""
+A view that shows the profile and requires a user to be logged in
+"""
 @login_required
 def profile(request):
 
@@ -62,8 +69,6 @@ def profile(request):
         project_count = project_count + 1
         task_count = task_count + task
 
-    
-    """A view that displays the profile page of a logged in user"""
     return render(request, 'profile.html', {
         'info': info,
         'project_count': project_count,
@@ -71,6 +76,9 @@ def profile(request):
     })
 
 
+"""
+A view that lets a user edit their profile
+"""
 def edit_profile(request, pk=None):
 
     # Get user profile details
@@ -88,9 +96,11 @@ def edit_profile(request, pk=None):
     })
 
 
+"""
+A view that manages the registration form
+"""
 def register(request):
  
-    """A view that manages the registration form"""
     if request.method == 'POST':
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
