@@ -8,7 +8,7 @@ Test the Home View for a user being signed in or not signed in
 class HomeViewTests(TestCase):
     
     # This runs a testing client
-    c=Client()
+    c = Client()
     
     # Logged In 
     def test_home_logged_in_view(self):

@@ -3,7 +3,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
-# Create your models here.
+"""
+Create a Project model
+"""
 class Project(models.Model):
     
     status = (
@@ -12,7 +14,6 @@ class Project(models.Model):
         ('Personal','Personal'),
     )
 
-    
     name = models.CharField(max_length=40, blank=False)
     description = models.CharField(max_length=255, blank=False)
     status = models.CharField(max_length=40, choices=status, default='Work')

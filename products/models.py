@@ -1,6 +1,9 @@
 from django.db import models
 
-# Create your models here.
+
+"""
+Create a Product model
+"""
 class Product(models.Model):
     name = models.CharField(max_length=254, default='')
     description = models.TextField()

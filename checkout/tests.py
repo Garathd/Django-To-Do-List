@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.test import TestCase, Client
 from accounts.client import Login
 from .forms import OrderForm, MakePaymentForm
@@ -40,6 +41,9 @@ Testing the Checkout Model
 class CheckoutModelTests(TestCase):
     
     def test_order_model(self):
+        
+        current_time = timezone.now()
+        
         order = Order(
             full_name = 'Example User',
             phone_number = '089 1122334',
@@ -49,7 +53,7 @@ class CheckoutModelTests(TestCase):
             street_address1 = 'Merlin Park',
             street_address2 = 'Renmore',
             county = 'Galway',
-            date = '2020-12-31'
+            date = current_time
         )
         order.save()
         self.assertEqual(order.full_name, "Example User")
@@ -60,5 +64,5 @@ class CheckoutModelTests(TestCase):
         self.assertEqual(order.street_address1, "Merlin Park")
         self.assertEqual(order.street_address2, "Renmore")
         self.assertEqual(order.county, "Galway")
-        self.assertEqual(order.date, "2020-12-31")
+        self.assertEqual(order.date, current_time)
         
