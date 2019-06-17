@@ -10,12 +10,9 @@
                 <h3>{{ item.product.name }}</h3>
                 <p class="product-description">{{ item.product.description }}</p>
                 <p><strong>Price: €{{ item.product.price }}</strong></p>
-                <p>
-
                     <form class="form-inline" method="post" action="{% url 'adjust_cart' item.id %}">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="exampleInputAmount" class="sr-only"></label>
                             <div class="input-group">
                                 <input name="quantity" type="hidden" value="0" class="form-control">
                             </div>
@@ -23,7 +20,6 @@
                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</button>
                         <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Checkout</a>
                     </form>
-                </p>
             </div>
         </div>
     </div>

@@ -79,6 +79,11 @@ input[name="screenshot"], input[name="picture"] {
     margin: 2% 0 !important;
 }
 
+.breadcrumb-type{
+    font-style: normal;
+    font-weight: 600;
+}
+
 .featured-break{
     margin-bottom: 4.4% !important;
 }

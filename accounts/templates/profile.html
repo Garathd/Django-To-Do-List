@@ -1,9 +1,10 @@
-{% extends "base.html" %} {% block content %} {% for i in info %}
+{% extends "base.html" %} 
+{% block content %} 
+
 
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / 
-        Profile
+        <a href="{% url 'dashboard' %}">Home</a> / Profile
         <hr />
     </div>
 </div>
@@ -13,21 +14,20 @@
 
 <div class="row">
     <div class="col-md-3">
-        {% if i.picture %} 
+        {% for i in info %}
+        {% if i.picture %}
         <div class="screenshot-container">
             <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
-            <img class="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
+            <img class="screenshot"  alt="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
         </a>
         </div>
-        <br /> 
-        {% else %} 
+        <br /> {% else %}
         <div class="screenshot-container">
             <a href="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png" target="_blank">
-            <img class="screenshot" src="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png">
+            <img class="screenshot" alt="placeholder" src="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png">
         </a>
         </div>
-        <br />
-        {% endif %}
+        <br /> {% endif %}
     </div>
 
     <div class="col-md-9">
@@ -44,11 +44,8 @@
         <p><strong>Current Projects: </strong> {{ project_count }}</p>
         <p><strong>Current Tasks: </strong> {{ task_count }}</p>
 
-        <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-        {% if i.account == 'free' %}
-        <a href="{% url 'products' %}" class="btn btn-default"><span class="glyphicon glyphicon-euro"></span> Buy Pro Version</a> 
-        {% endif %}
-        {% endfor %} 
-    {% endblock %}
+        <a href="{% url 'edit_profile' %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a> {% if i.account == 'free' %}
+        <a href="{% url 'products' %}" class="btn btn-default"><span class="glyphicon glyphicon-euro"></span> Buy Pro Version</a> {% endif %} {% endfor %} 
     </div>
 </div>
+{% endblock %}

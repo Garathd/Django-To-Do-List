@@ -15,7 +15,7 @@
                 <form method="post" action="{% url 'add_to_cart' product.id %}">
                     {% csrf_token %}
                     <div class="input-group">
-                        <input name="quantity" type="hidden" value="1" class="form-control" placeholder="Quantity">
+                        <input name="quantity" type="hidden" value="1" class="form-control">
                         <span class="input-group-btn">
                             {% if account == 'free' and added == False %}
                             <button class="btn btn-success" type="submit">Add to Cart</button>

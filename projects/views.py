@@ -22,26 +22,44 @@ def get_projects(request):
 
         if search_select == 'all':
             projects = Project.objects.filter(user__username=request.user)
+            project_type = "All"
         
         if search_select == 'work':
             projects = Project.objects.filter(status='Work', user__username=request.user)
+            project_type = "Work"
 
         if search_select == 'education':
             projects = Project.objects.filter(status='Education', user__username=request.user)
+            project_type = "Education"
             
         if search_select == 'personal':
             projects = Project.objects.filter(status='Personal', user__username=request.user)
+            project_type = "Personal"
+            
+            
+        project_count = Project.objects.filter(user__username=request.user).count()
             
         """ 
         What ever is choosen in the select box 
-        is no filtered and resend to tasks page
+        is now filtered and resend to tasks page
         """
-        return render(request, "projects.html", {'projects': projects})
+        return render(request, "projects.html", {
+            'projects': projects,
+            'project_count': project_count,
+            'project_type': project_type
+        })
         
     else:
         projects = Project.objects.filter(user__username=request.user)
+        project_count = Project.objects.filter(user__username=request.user).count()
+        project_type = "All"
         
-        return render(request, "projects.html", {'projects': projects})
+        return render(request, "projects.html", {
+            'projects': projects,
+            'project_count': project_count,
+            'project_type': project_type
+            
+        })
         
         
 @login_required()    
@@ -133,25 +151,34 @@ def view_only(request, pk=None):
         
         if search_select == 'all':
             tasks = Task.objects.filter(project=project)
+            task_type = "Show All"
 
         if search_select == 'hpriority':
             tasks = Task.objects.filter(priority='High', project=project)
+            task_type = "High Priority"
 
         if search_select == 'mpriority':
             tasks = Task.objects.filter(priority='Medium', project=project)
+            task_type = "Medium Priority"
 
         if search_select == 'lpriority':
             tasks = Task.objects.filter(priority='Low', project=project)
+            task_type = "Low Priority"
 
         if search_select == 'todo':
             tasks = Task.objects.filter(status='To Do', project=project)
+            task_type = "To Do"
 
         if search_select == 'progress':
             tasks = Task.objects.filter(status='In Progress', project=project)
+            task_type = "In Progress"
 
         if search_select == 'done':
             tasks = Task.objects.filter(status='Done', project=project)
-
+            task_type = "Done"
+            
+        task_count = Task.objects.filter(project=project).count()
+            
         """ 
         What ever is choosen in the select box 
         is no filtered and resend to tasks page
@@ -159,14 +186,21 @@ def view_only(request, pk=None):
         return render(request, "project_tasks.html", {
             'tasks': tasks,
             'project_id': pk,
-            'project': project_name
+            'project': project_name,
+            'task_type': task_type,
+            'task_count': task_count
         })
         
     else:
         tasks = Task.objects.filter(project=project)
+        task_type = "Show All"
+        task_count = Task.objects.filter(project=project).count()
+        
         return render(request, "project_tasks.html", {
             'tasks': tasks,
             'project_id': pk,
-            'project': project_name
+            'project': project_name,
+            'task_type': task_type,
+            'task_count': task_count
         })    
 

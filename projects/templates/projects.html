@@ -2,7 +2,9 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / Projects
+        <a href="{% url 'dashboard' %}">Home</a> / 
+        Projects / <i class="breadcrumb-type">{{ project_type }}</i>
+        
         <hr />
     </div>
 </div>
@@ -28,15 +30,14 @@
     <hr />
 </div>
 
-
-{% if projects %}
+{% if project_count != 0 %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
         <form action="{% url 'get_projects' %}" method="POST">
             {% csrf_token %}
             <select name="search" class="form-control">
-              <option value="all" default>Show All</option>
+              <option value="all">Show All Projects</option>
               <option value="work">Work</option>
               <option value="education" >Education</option>
               <option value="personal" >Personal</option>
@@ -50,7 +51,9 @@
 
 <div class="row">
 
-    {% if projects %} {% for project in projects %}
+    {% if projects %} 
+    
+    {% for project in projects %}
 
     <div class="col-md-4">
         <div class="project-icon">
@@ -69,7 +72,16 @@
         </p>
         <hr />
     </div>
-    {% endfor %} {% else %}
+    {% endfor %}
+    
+    {% elif project_count != 0 %}
+    <div class="col-md-12">
+        <div class="no-content center">
+            <i class="far fa-smile"></i>
+            <h4>You have no Projects categorized as: "{{ project_type }}"</h4>
+        </div>
+    </div>
+    {% else %}
     <div class="col-md-12">
         <div class="no-content center">
             <i class="far fa-smile"></i>

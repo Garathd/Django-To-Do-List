@@ -1,5 +1,4 @@
 {% extends 'base.html' %} {% block content %}
-
 <div class="row">
     <div class="col-md-12">
         <a href="{% url 'dashboard' %}">Home</a> /
@@ -14,12 +13,12 @@
         {% if task.screenshot %}
         <div class="screenshot-container">
             <a href="{{ MEDIA_URL }}{{ task.screenshot }}" target="_blank">
-                <img class="screenshot" src="{{ MEDIA_URL }}{{ task.screenshot }}">
+                <img class="screenshot" alt="screenshot" src="{{ MEDIA_URL }}{{ task.screenshot }}">
             </a>
         </div>
         {% else %}
         <div class="screenshot-container">
-                <img class="screenshot" src="{{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png">
+                <img class="screenshot" alt="placeholder" src="{{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png">
         </div>
         {% endif %}
     </div>
