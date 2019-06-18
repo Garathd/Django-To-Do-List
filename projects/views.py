@@ -22,7 +22,7 @@ def get_projects(request):
 
         if search_select == 'all':
             projects = Project.objects.filter(user__username=request.user)
-            project_type = "All"
+            project_type = "Show All"
         
         if search_select == 'work':
             projects = Project.objects.filter(status='Work', user__username=request.user)
@@ -52,7 +52,7 @@ def get_projects(request):
     else:
         projects = Project.objects.filter(user__username=request.user)
         project_count = Project.objects.filter(user__username=request.user).count()
-        project_type = "All"
+        project_type = "Show All"
         
         return render(request, "projects.html", {
             'projects': projects,
@@ -86,6 +86,13 @@ def create_or_edit_project(request, pk=None):
     project_count = 0
     account_type = ""
     
+    if pk:
+        project_info = Project.objects.filter(user__username=request.user, pk=pk)
+        for pi in project_info:
+            project_name = pi.name
+    else: 
+        project_name = False
+    
     info = UserProfile.objects.filter(user=request.user)
     for i in info:
         account_type = i.account
@@ -105,20 +112,21 @@ def create_or_edit_project(request, pk=None):
                 'result': "trial"
             })
         else:
-
             form = ProjectForm(request.POST, request.FILES, instance=project)
             if form.is_valid():
                 project = form.save(commit=False)
                 project.user = request.user
                 project.save()
-                return redirect(reverse('project_info', kwargs={
-                    'pk': project.id 
+                return redirect(reverse('project_info', 
+                kwargs={
+                    'pk': project.id
                 }))
     else:
         form = ProjectForm(instance=project)
     return render(request, 'projectform.html', {
         'form': form,
-        'project': pk
+        'project': pk,
+        'project_name': project_name
     })
     
     

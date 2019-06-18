@@ -1,15 +1,37 @@
-{% extends "base.html" %}
-{% load bootstrap_tags %}
-{% block content %}
+{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">Save</button>
-        {% if project != None %}
-        <a href="{% url 'project_info' project %}" class="btn btn-danger">Cancel</a>
-        {% else %}
-        <a href="{% url 'get_projects' %}" class="btn btn-danger">Cancel</a>
-        {% endif %}
-    </form>
+
+{% if project %}
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project_name }}
+        <hr />
+    </div>
+</div>
+
+<h1 class="center"><strong>Edit Project:</strong> {{ project_name }}</h1>
+
+{% else %}
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / New Project
+        <hr />
+    </div>
+</div>
+
+<h1 class="center">New Project</h1>
+{% endif %}
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %} {{ form | as_bootstrap }}
+            <button type="submit" class="btn btn-info">Save</button> {% if project != None %}
+            <a href="{% url 'project_info' project %}" class="btn btn-danger">Cancel</a> {% else %}
+            <a href="{% url 'get_projects' %}" class="btn btn-danger">Cancel</a> {% endif %}
+        </form>
+    </div>
+</div>
+
 {% endblock %}

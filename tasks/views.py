@@ -6,18 +6,6 @@ from projects.models import Project
 from .forms import TaskForm
 from django.utils import timezone
 from accounts.models import UserProfile
-        
-@login_required()
-#Get Task Information
-def task_info(request, project, pk):
-    
-    task = get_object_or_404(Task, pk=pk)
-    task.save()
-
-    return render(request, "taskinfo.html", {
-        'task': task,
-        'project': project
-    })
 
 
 @login_required() 
@@ -27,6 +15,10 @@ def create_or_edit_task(request, pk=None, project=None):
     
     project_info = Project.objects.filter(id=project)
     tasks = Task.objects.filter(project=project)
+    
+    tasks = Task.objects.filter(project=project,pk=pk)
+    for ti in tasks:
+        task_name = ti.name
     
     for pi in project_info:
         project_id = pi.id
@@ -62,16 +54,18 @@ def create_or_edit_task(request, pk=None, project=None):
                 if project != None:
                     task.project = project_instance
                 task.save()
-                return redirect(reverse('task_info', kwargs={
-                    'project': project,
-                    'pk': task.id 
+                return redirect(reverse('view_only', kwargs={
+                    'pk': project_id
                 }))
     else:
         form = TaskForm(instance=task)
     return render(request, 'taskform.html', {
         'form': form,
         'task': pk,
-        'project': project
+        'project': project,
+        'project_name': project_name,
+        'project_id': project_id,
+        'task_name': task_name
     })
 
     
@@ -79,7 +73,17 @@ def create_or_edit_task(request, pk=None, project=None):
 #Deletes a Task    
 def delete_task(request, pk=None):
     
+    get_project = Task.objects.filter(id=pk)
+    
+    for pi in get_project:
+        project = Project.objects.filter(name=pi.project)
+        for pj in project:
+            project_id = pj.id
+    
     Task.objects.filter(id=pk).delete()
-    return redirect(reverse('get_projects'))
+    
+    return redirect(reverse('view_only', kwargs={
+                    'pk': project_id
+                }))
 
         

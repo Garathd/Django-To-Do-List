@@ -84,7 +84,7 @@ After running each possible scenario multiple times, going over each feature, us
 
 ### Unit Testing
 
-This project has 25 Unit Tests overall. Tests can be run in terminal with the following command: "python3 manage.py test".
+This project has 24 Unit Tests overall. Tests can be run in terminal with the following command: "python3 manage.py test".
 Each app has associated tests. The first app is the accounts app, so to run tests on this app the command would be: "python3 manage.py test accounts" 
 
 #### Acounts App Testing ####
@@ -158,7 +158,6 @@ Each app has associated tests. The first app is the accounts app, so to run test
 
 - ***Test Task Model***: This tests the task model by creating both a new project and associated task
 
-- ***Test Task View***: This tests first creates a new project and then an associated task and then navigates to the task / project url associated with the newly created project and task and then checks if the page gets a http 200 response and then checks if the template was used
 
 
 ## Deployment

@@ -2,9 +2,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / 
-        Projects / <i class="breadcrumb-type">{{ project_type }}</i>
-        
+        <a href="{% url 'dashboard' %}">Home</a> / Projects / <i class="breadcrumb-type">{{ project_type }}</i>
+
         <hr />
     </div>
 </div>
@@ -51,30 +50,27 @@
 
 <div class="row">
 
-    {% if projects %} 
-    
-    {% for project in projects %}
+    {% if projects %} {% for project in projects %}
 
     <div class="col-md-4">
-        <div class="project-icon">
-            {% if project.status == 'Work' %}
-            <i class="fas fa-briefcase"></i> {% elif project.status == 'Education' %}
-            <i class="fas fa-graduation-cap"></i> {% elif project.status == 'Personal' %}
-            <i class="fas fa-users"></i> {% endif %} &nbsp;
+        <div class="project-container">
+            <div class="project-icon">
+                {% if project.status == 'Work' %}
+                <i class="fas fa-briefcase"></i> {% elif project.status == 'Education' %}
+                <i class="fas fa-graduation-cap"></i> {% elif project.status == 'Personal' %}
+                <i class="fas fa-users"></i> {% endif %} &nbsp;
+            </div>
+            <div class="project-info">
+                <p><span class="boldtext">Name: </span> {{ project.name}}</p>
+                <p><span class="boldtext">Type: </span> {{ project.status }}</p>
+            </div>
+            <p>
+                <a href="{% url 'project_info' project.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
+                <a href="{% url 'view_only' project.id %}" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> Tasks</a>
+            </p>
         </div>
-        <div class="project-info">
-            <p><span class="boldtext">Name:</span> {{project.name}}</p>
-            <p><span class="boldtext">Type:</span> {{ project.status }}</p>
-        </div>
-        <p>
-            <a href="{% url 'project_info' project.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
-            <a href="{% url 'view_only' project.id %}" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> Tasks</a>
-        </p>
-        <hr />
     </div>
-    {% endfor %}
-    
-    {% elif project_count != 0 %}
+    {% endfor %} {% elif project_count != 0 %}
     <div class="col-md-12">
         <div class="no-content center">
             <i class="far fa-smile"></i>

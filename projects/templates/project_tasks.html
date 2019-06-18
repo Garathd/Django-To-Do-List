@@ -57,17 +57,10 @@
                     <div class="screenshot" alt="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
                     </div>
 
-                    <!--<div class="screenshot-container">-->
-                    <!--    <img class="screenshot-image" src="{{ MEDIA_URL }}{{ task.screenshot }}">-->
-                    <!--</div>-->
-
                     {% else %}
 
                     <div class="screenshot" alt="placeholder" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
 
-                    <!--<div class="screenshot-container">-->
-                    <!--    <img class="screenshot-image" src="{{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png">-->
-                    <!--</div>-->
                     {% endif %}
                 </div>
                 <div class="col-md-7 col-sm-6 col-xs-12">
@@ -77,7 +70,13 @@
                     <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
                     <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
                     <hr />
-                    <p><a href="{% url 'task_info' task.id project_id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Edit</a> <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New</a>
+                    <p>
+
+                        <a href="{% url 'edit_task' task.id project_id %}" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+
+                        <a href="{% url 'delete_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                        
+                        <a href="{% url 'create_task' project_id %}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> New</a>
                     </p>
                     <hr />
 
@@ -91,7 +90,9 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
-            <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
+            <div class="new-task">
+                <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
+            </div>
         </div>
     </div>
     {% else %}
@@ -99,7 +100,9 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Tasks. Please add a task...</h4>
-            <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
+            <div class="new-task">
+                <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
+            </div>
         </div>
     </div>
     {% endif %}
