@@ -10,6 +10,10 @@ My UX process was to analyze what I thought would streamline my original paper t
 
 The requirements are:
 
+- To be able to register different users and create accounts
+- To be able to view and edit user profile.
+- To be able to purchase a pro version of the app
+- For a trial user to be only able to create 1 project and 3 tasks
 - To be able to to create, edit and delete a project
 - To be able to create, edit and delete a task
 - To be able to assign a projects type as Work, Educational or Personal
@@ -20,6 +24,9 @@ The requirements are:
 
 User stories:
 
+- As a user I want to be able to register an account
+- As a user I want to be able to edit profile
+- As a user I want to be able to update my account to pro version
 - As a user I want to be able to create edit and delete projects and tasks
 - As a user I want to be able to filter projects by Work, Educational or Personal
 - As a user I want to be able to filter tasks by Priorities and Status
