@@ -2,9 +2,8 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / 
-        <a href="{% url 'get_projects' %}"> Projects</a> / 
-        {{ project }} / <i class="breadcrumb-type">{{ task_type }}</i>
+        <a href="{% url 'dashboard' %}">Home</a> /
+        <a href="{% url 'get_projects' %}"> Projects</a> / {{ project }} / <i class="breadcrumb-type">{{ task_type }}</i>
         <hr />
     </div>
 </div>
@@ -20,14 +19,7 @@
 
 <h1 class="center"><strong>Project:</strong> {{project}}</h1>
 
-<div class="row">
-    <div class="col-md-12">
-        <h3 class="create"><span><a href="{% url 'create_task' project_id %}">Create a new Task</a></span></h3>
-    </div>
-</div>
-
-&nbsp; 
-{% if task_count != 0 %}
+&nbsp; {% if task_count != 0 %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -46,34 +38,60 @@
         </form>
     </div>
 </div>
-&nbsp; {% endif %}
+{% endif %}
+
+
 
 <div class="row">
     {% if tasks %} {% for task in tasks %}
-    <div class="col-md-4">
-        <p><span class="boldtext">Name:</span> {{task.name}}</p>
-        <p><span class="boldtext">Project:</span> {{ task.project }}</p>
-        <p><span class="boldtext">Status:</span> {{ task.status }}</p>
-        {% if task.priority == 'High' %}
-        <p style="color:red; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
-        {% elif task.priority == 'Medium' %}
-        <p style="color:orange; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
-        {% elif task.priority == 'Low' %}
-        <p style="color:green; font-weight:600"><span class="boldtext" style="color:#555555 !important;">Priority:</span> {{ task.priority }}</p>
-        {% endif %} {% if task.screenshot %}
-        <p><span class="boldtext">Screenshot:</span> Yes</p>
-        {% else %}
-        <p><span class="boldtext">Screenshot:</span> No</p>
-        {% endif %}
-        <p><a href="{% url 'task_info' task.id project_id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> More...</a></p>
-        <hr />
+    <div class="task-list">
+        <div class="inner-task-list">
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    {% if task.screenshot %}
+                    <div class="screenshot" alt="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
+                    </div>
+
+                    <!--<div class="screenshot-container">-->
+                    <!--    <img class="screenshot-image" src="{{ MEDIA_URL }}{{ task.screenshot }}">-->
+                    <!--</div>-->
+
+                    {% else %}
+
+                    <div class="screenshot" alt="placeholder" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
+
+                    <!--<div class="screenshot-container">-->
+                    <!--    <img class="screenshot-image" src="{{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png">-->
+                    <!--</div>-->
+                    {% endif %}
+                </div>
+                <div class="col-md-7 col-sm-6 col-xs-12">
+                    <p><span class="boldtext">Name:</span> {{task.name}}</p>
+                    <p><span class="boldtext">Description:</span> {{ task.description }}</p>
+                    <p><span class="boldtext">Status:</span> {{ task.status }}</p>
+                    <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
+                    <hr />
+                    <p><a href="{% url 'task_info' task.id project_id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Edit</a> <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New</a>
+                    </p>
+                    <hr />
+
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
     </div>
-    {% endfor %} 
-    {% elif project_count != 0 %}
+    {% endfor %} {% elif project_count != 0 %}
     <div class="col-md-12">
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
+            <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
         </div>
     </div>
     {% else %}
@@ -81,6 +99,7 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Tasks. Please add a task...</h4>
+            <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
         </div>
     </div>
     {% endif %}

@@ -67,8 +67,47 @@ hr {
   margin-bottom: 1% !important; }
 
 /*For Image Upload Field*/
-input[name="screenshot"], input[name="picture"] {
+input[name="screenshot"],
+input[name="picture"] {
   padding-bottom: 47px !important; }
 
 .screenshot {
-  width: 250px !important; }
+  height: 245px !important;
+  width: 245px !important;
+  background-size: cover !important;
+  background-position: center !important;
+  margin-bottom: 5% !important; }
+
+.screenshot-image {
+  width: 100%; }
+
+.icon-screenshot {
+  width: 150px;
+  height: 150px;
+  padding: 1%; }
+
+.task-list {
+  margin: 5% !important;
+  border: 2px solid #ccc;
+  padding: 2%;
+  background: #eee;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px; }
+
+.task-info {
+  float: left;
+  padding-right: 6%;
+  padding-top: 2.5%; }
+
+.task-description {
+  margin-top: 5%; }
+
+.task-screenshot > .screenshot-container {
+  height: 150px;
+  width: 150px;
+  overflow: hidden; }
+
+.screenshot-background {
+  background-size: cover !important;
+  height: 150px; }
