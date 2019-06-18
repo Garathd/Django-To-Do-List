@@ -1,93 +1,74 @@
+.center {
+  text-align: center; }
+
 .navbar {
-    border-radius: 0px !important;
-}
+  border-radius: 0px !important; }
 
 .boldtext,
 .font-weight-bold {
-    font-weight: bold;
-    color:#555555 !important;
-}
+  font-weight: bold;
+  color: #555555 !important; }
 
-.featured-box {
-    background-color: #E8EAF6;
-    margin: 1%;
-    padding: 5%;
-    border-radius: 2%;
-    border-right: 1px solid #ccc;
-}
+hr {
+  border-top: 1px solid #ccc !important; }
+
+#search_button {
+  float: right !important;
+  margin-top: 2%; }
+
+.featured-break {
+  margin-bottom: 4.4% !important; }
+
+.priorities {
+  color: #000000 !important;
+  font-style: normal !important; }
+
+.create > span > a {
+  text-decoration: underline !important; }
 
 .fab {
-    font-size: 1.5em !important;
-}
+  font-size: 1.5em !important; }
 
-.priorities{
-    color: #000000 !important;
-    font-style: normal !important;
-}
+.no-content > .far {
+  font-size: 7em !important;
+  margin: 2% 0 !important; }
 
-#search_button{
-    float: right !important;
-    margin-top: 2%;
-}
+.breadcrumb-type {
+  font-style: normal;
+  font-weight: 600; }
 
-.create > span > a{
-    text-decoration: underline !important;
-}
+.featured-box {
+  background-color: #E8EAF6;
+  margin: 1%;
+  padding: 5%;
+  border-radius: 2%;
+  border-right: 1px solid #ccc; }
 
-.center{
-    text-align: center;
-}
-
-.user_image{
-    width: 40px !important;
-}
+.user_image {
+  width: 40px !important; }
 
 .product {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 250px;
-    margin: 0 auto;
-}
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 250px;
+  margin: 0 auto; }
+
+.project-icon {
+  float: left;
+  padding-right: 1.5%; }
+
+.project-icon > .fas {
+  font-size: 3em !important;
+  margin-bottom: 1% !important; }
+
+.project-view-icon > .fas {
+  font-size: 9em !important;
+  margin-bottom: 1% !important; }
 
 /*For Image Upload Field*/
 input[name="screenshot"], input[name="picture"] {
-    padding-bottom: 47px !important;
-}
+  padding-bottom: 47px !important; }
 
-.screenshot{
-    width: 250px !important;
-}
-
-.project-icon{
-    float: left;
-    padding-right: 1.5%;
-}
-
-.project-icon > .fas{
-    font-size: 3em !important;
-    margin-bottom: 1% !important;
-}
-
-.project-view-icon > .fas{
-    font-size: 9em !important;
-    margin-bottom: 1% !important;
-}
-
-.no-content > .far{
-    font-size: 7em !important;
-    margin: 2% 0 !important;
-}
-
-.breadcrumb-type{
-    font-style: normal;
-    font-weight: 600;
-}
-
-.featured-break{
-    margin-bottom: 4.4% !important;
-}
-
-hr{
-    border-top: 1px solid #ccc !important; 
-}
+.screenshot {
+  width: 250px !important; }
