@@ -82,76 +82,76 @@ Each app has associated tests. The first app is the accounts app, so to run test
 
 #### Acounts App Testing ####
 
-***Test Login Form***: This tests the login form validation
+- ***Test Login Form***: This tests the login form validation
 
-***Test Registration Form***: This tests the registration form validation
+- ***Test Registration Form***: This tests the registration form validation
 
-***Test User Profile Form***: This tests the user profile form validation
+- ***Test User Profile Form***: This tests the user profile form validation
 
-***Test User Profile Model***: This tests the user profile models
+- ***Test User Profile Model***: This tests the user profile models
 
-***Test Register View***: This tests if a user can access the register page and if the page gets a http 200 response and then checks the if template was used.
+- ***Test Register View***: This tests if a user can access the register page and if the page gets a http 200 response and then checks the if template was used.
 
-***Test Login View***: This tests if a user can access the login page and if the page gets a http 200 response and then checks the if template was used.
+- ***Test Login View***: This tests if a user can access the login page and if the page gets a http 200 response and then checks the if template was used.
 
-***Test Profile View***: This tests if a user can access the profile page and if the page gets a http 200 response and then checks the if template was used.
+- ***Test Profile View***: This tests if a user can access the profile page and if the page gets a http 200 response and then checks the if template was used.
 
-***Test Edit Profile View***: This tests if a user can access the edit profile page and if the page gets a http 200 response and then checks the if template was used.
+- ***Test Edit Profile View***: This tests if a user can access the edit profile page and if the page gets a http 200 response and then checks the if template was used.
 
 
 ####  Cart App Testing ####
 
-***Test Cart View***: This tests if the cart is empty and if the page gets a http 302 response if the user navigates to the cart page 
+- ***Test Cart View***: This tests if the cart is empty and if the page gets a http 302 response if the user navigates to the cart page 
 
 
 ####  Checkout App Testing ####
 
-***Test Checkout View***: This tests if the cart is empty and if the page gets a http 302 response if the user navigates to the checkout page
+- ***Test Checkout View***: This tests if the cart is empty and if the page gets a http 302 response if the user navigates to the checkout page
 
-***Test Order Form***: This tests the customer order form validation
+- ***Test Order Form***: This tests the customer order form validation
 
-***Test Order Model***: This tests the order model
+- ***Test Order Model***: This tests the order model
 
 
 ####  Dashboard App Testing ####
 
-***Test Dashboard View***: This tests to see if a logged in user can access the dashboard and the page and if the page gets a http 200 response and if the template was used
+- ***Test Dashboard View***: This tests to see if a logged in user can access the dashboard and the page and if the page gets a http 200 response and if the template was used
 
 
 ####  Home App Testing ####
 
-***Test Home Logged In View***: This tests to see if a logged in user can access the dashboard and the page gets a http 200 response and checks if the template was used
+- ***Test Home Logged In View***: This tests to see if a logged in user can access the dashboard and the page gets a http 200 response and checks if the template was used
 
-***Test Home Not Logged In View***: This tests to see if a non logged in user can access the dashboard and if the page gets a http 302 response and checks if the template was not used
+- ***Test Home Not Logged In View***: This tests to see if a non logged in user can access the dashboard and if the page gets a http 302 response and checks if the template was not used
 
 
 ####  Products App Testing ####
 
-***Test Product View***: This tests to see if a user can access the products page and if the page gets a http 200 response and checks if the template was used
+- ***Test Product View***: This tests to see if a user can access the products page and if the page gets a http 200 response and checks if the template was used
 
-***Test Product Model***: This tests the Product Model
+- ***Test Product Model***: This tests the Product Model
 
 
 ####  Projects App Testing ####
 
-***Test Project Form***: This tests the project form validation
+- ***Test Project Form***: This tests the project form validation
 
-***Test Project Model***: This tests the project model
+- ***Test Project Model***: This tests the project model
 
-***Test Project View***: This tests to see if a user can access the projects page and if the page gets a http 200 response and then checks if the template was used
+- ***Test Project View***: This tests to see if a user can access the projects page and if the page gets a http 200 response and then checks if the template was used
 
-***Test Project Info View***: This tests first creates a new project and then navigates to the project info page and checks if the page gets a http 200 response and then checks if the template was used
+- ***Test Project Info View***: This tests first creates a new project and then navigates to the project info page and checks if the page gets a http 200 response and then checks if the template was used
 
-***Test View Only View***: This tests first creates a new project and then navigates to the tasks view url associated with the newly created project and then checks if the page gets a http 200 response and then checks if the template was used
+- ***Test View Only View***: This tests first creates a new project and then navigates to the tasks view url associated with the newly created project and then checks if the page gets a http 200 response and then checks if the template was used
 
 
 ####  Tasks App Testing ####
 
-***Test Task Form***: This tests the task form validation
+- ***Test Task Form***: This tests the task form validation
 
-***Test Task Model***: This tests the task model by creating both a new project and associated task
+- ***Test Task Model***: This tests the task model by creating both a new project and associated task
 
-***Test Task View***: This tests first creates a new project and then an associated task and then navigates to the task / project url associated with the newly created project and task and then checks if the page gets a http 200 response and then checks if the template was used
+- ***Test Task View***: This tests first creates a new project and then an associated task and then navigates to the task / project url associated with the newly created project and task and then checks if the page gets a http 200 response and then checks if the template was used
 
 
 ## Deployment
