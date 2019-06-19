@@ -14,11 +14,13 @@ import os
 import dj_database_url
 
 hostname = os.environ.get('C9_HOSTNAME')
+host = os.environ.get('HOSTNAME')
 
 if hostname:
     import env
 
 localurl = "d2d4e75b75f44ab88dda3bc6e45596c0.vfs.cloud9.eu-west-1.amazonaws.com"
+onlineurl = "milestone-project-5.herokuapp.com"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,7 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'milestone-project-5.herokuapp.com',
+    onlineurl,
     localurl
     ]
 
@@ -98,18 +100,16 @@ WSGI_APPLICATION = 'tracker.wsgi.application'
 
 # DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
-if hostname:
+if host == onlineurl:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+    
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-else:
-    print("Online DB")
-    print("Hostname: {}".format(os.environ.get('HOSTNAME')))
-    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
