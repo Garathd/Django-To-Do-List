@@ -1,11 +1,21 @@
-{% extends "base.html" %}
-{% load bootstrap_tags %}
-{% block content %}
+{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <button type="submit" class="btn btn-info">Save</button>
-        <a href="{% url 'profile' %}" class="btn btn-danger">Cancel</a>
-    </form>
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'dashboard' %}">Home</a> / 
+        <a href="{% url 'profile' %}">Profile</a> / 
+        <i class="breadcrumb-type">{{ username }}</i>
+        <hr />
+    </div>
+</div>
+
+<h1 class="center"><strong>Edit Profile:</strong> {{ username }}</h1>
+&nbsp;
+
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{ form | as_bootstrap }}
+    <button type="submit" class="btn btn-info">Save</button>
+    <a href="{% url 'profile' %}" class="btn btn-danger">Cancel</a>
+</form>
 {% endblock %}

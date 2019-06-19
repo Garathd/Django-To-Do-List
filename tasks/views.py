@@ -17,8 +17,11 @@ def create_or_edit_task(request, pk=None, project=None):
     tasks = Task.objects.filter(project=project)
     
     tasks = Task.objects.filter(project=project,pk=pk)
+    
+    task_name = False
     for ti in tasks:
         task_name = ti.name
+
     
     for pi in project_info:
         project_id = pi.id

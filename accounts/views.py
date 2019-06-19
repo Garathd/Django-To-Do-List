@@ -72,7 +72,7 @@ def profile(request):
     return render(request, 'profile.html', {
         'info': info,
         'project_count': project_count,
-        'task_count': task_count,
+        'task_count': task_count
     })
 
 
@@ -83,6 +83,10 @@ def edit_profile(request, pk=None):
 
     # Get user profile details
     profile = get_object_or_404(UserProfile, user=request.user) 
+    
+    info = UserProfile.objects.filter(user=request.user)
+    for i in info:
+        username = i.user
 
     if request.method == "POST":
         form = UserProfileForm(request.POST, request.FILES, instance=profile)
@@ -92,7 +96,8 @@ def edit_profile(request, pk=None):
     else:
         form = UserProfileForm(instance=profile)
     return render(request, 'profileform.html', {
-        'form': form
+        'form': form,
+        'username': username
     })
 
 
