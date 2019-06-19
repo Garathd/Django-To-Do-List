@@ -82,10 +82,15 @@ After running each possible scenario multiple times, going over each feature, us
 - [HTML Validation](https://www.freeformatter.com/html-validator.html)
 - [CSS Validation](https://jigsaw.w3.org/css-validator/)
 
+### Continuous Integration
+
+For Continuous Integration I used Travis which constantly tests my app every time I push a new change to github
+
 ### Unit Testing
 
 This project has 24 Unit Tests overall. Tests can be run in terminal with the following command: "python3 manage.py test".
 Each app has associated tests. The first app is the accounts app, so to run tests on this app the command would be: "python3 manage.py test accounts" 
+
 
 #### Acounts App Testing ####
 
@@ -165,18 +170,23 @@ Each app has associated tests. The first app is the accounts app, so to run test
 ### Heroku Deployment Steps
 
 DEFAULT STEPS: NEED TO CHANGE THIS AND EXPAND AND MENTION MANUAL DEPLOYMENT FOR LIVE SITE!!!!!!!!
+1. Create a new app
+2. Install [PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
+3. Add PostgreSQL Database url to the config vars
+4. Add Stripe Publishable and Secret Key to the config vars
+5. Add AWS Secret Key and Access Key
+6. Add Django Secret Key to the config vars
+7. Restart all dynos
+8. Go to Deploy > Deployment method and connect to github
+9. Manual deploy the app with github master branch of selected project
+10. Make sure Django Migrations are done and app is now deployed to heroku.
 
-1. Go to the Heroku Website and create new app
-2. Create requirements.txt and Procfile to tell heroku what is required to run the app
-3. Login into Heroku Account via command line and add the newly created app
-4. Go back to Heroku Website and in the settings tab click *Reveal Config Vars* and add IP and PORT vars from Project Config
-5. Install [ClearDB](https://elements.heroku.com/addons/cleardb) and import local MySQL Database dump.sql
-5. Restart all dynos
-6. Finally do an initial git commit and push to heroku
+[Live App](https://milestone-project-5.herokuapp.com)
 
-### AWS Static Website Stuff
 
-Mention this in more detail
+### Amazon S3 
+
+This application uses Amazon S3 Buckets to host my static css and js files as well all user uploaded images.
 
 
 ## Content and Media
