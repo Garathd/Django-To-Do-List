@@ -112,8 +112,18 @@ hr {
   margin-top: 2% !important;
   background: #009688 !important; }
 
+.cart-fix {
+  overflow: hidden !important;
+  clear: both !important;
+  vertical-align: middle !important; }
+
 main {
   flex: 1 0 auto !important; }
+
+.account-logo {
+  font-size: 1.2em !important;
+  margin-left: 2px !important;
+  margin-top: 0.1em !important; }
 
 .credentials {
   background-color: #3f51b5 !important;
