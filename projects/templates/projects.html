@@ -75,6 +75,9 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Projects categorized as: "{{ project_type }}"</h4>
+            <div class="create-new">
+                <a href="{% url 'create_project' %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Project</a>
+            </div>
         </div>
     </div>
     {% else %}
@@ -82,6 +85,9 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Projects. Please add a project...</h4>
+            <div class="create-new">
+                <a href="{% url 'create_project' %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Project</a>
+            </div>
         </div>
     </div>
     {% endif %}
