@@ -7,15 +7,20 @@
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 
-{% endblock %} 
-{% block content %}
+{% endblock %} {% block content %}
+
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> /
+    <i class="breadcrumb-type">Checkout</i>
+
+    <hr />
+</div>
 
 <div class="row">
     <div class="col-md-12">
         <h1 class="center">Total Payment: €{{ total }}</h1>
     </div>
-    <br>
-    &nbsp;
+    <br> &nbsp;
 </div>
 
 
@@ -37,7 +42,7 @@
     {% endfor %}
     <div class="col-md-6">
         <form method="post" id="payment-form" action="{% url 'checkout' %}">
-            
+
             <div id="credit-card-errors" style="display: none;">
                 <div class="alert-message block-message error" id="stripe-error-message"></div>
             </div>
@@ -52,7 +57,7 @@
 
             {% csrf_token %}
             <div class="form-group col-md-12">
-                <input class=" btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                <input class=" btn btn-default custom-button new-save-button" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
             </div>
         </form>
     </div>

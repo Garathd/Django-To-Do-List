@@ -1,27 +1,19 @@
-{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
-
-{% if task %}
-<div class="row">
-    <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / 
-        <a href="{% url 'get_projects' %}"> Projects</a> /
-        <a href="{% url 'view_only' project_id %}">  {{ project_name }} </a> /
-        {{ task_name }}
-        <hr />
-    </div>
+{% extends "base.html" %} {% load bootstrap4 %} {% block content %} {% if task %}
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> /
+    <a href="{% url 'get_projects' %}"> Projects</a> /
+    <a href="{% url 'view_only' project_id %}">  {{ project_name }} </a> / {{ task_name }}
+    <hr />
 </div>
 
 <h1 class="center"><strong>Edit Task:</strong> {{ task_name }}</h1>
 {% else %}
 
-<div class="row">
-    <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / 
-        <a href="{% url 'get_projects' %}"> Projects</a> /
-        <a href="{% url 'view_only' project_id %}">  {{ project_name }} </a> /
-        New Task
-        <hr />
-    </div>
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> /
+    <a href="{% url 'get_projects' %}"> Projects</a> /
+    <a href="{% url 'view_only' project_id %}">  {{ project_name }} </a> / New Task
+    <hr />
 </div>
 
 <h1 class="center">New Task</h1>
@@ -29,9 +21,10 @@
 <div class="row">
     <div class="col-md-12">
         <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %} {{ form | as_bootstrap }}
-            <button type="submit" class="btn btn-default">Save</button>
-            <a href="{% url 'view_only' project %}" class="btn btn-default">Cancel</a>
+            {% csrf_token %} {% bootstrap_form form %}
+            <br />
+            <button type="submit" class="btn btn-default custom-button new-save-button">Save</button>
+            <a href="{% url 'view_only' project %}" class="btn btn-default custom-button delete-cancel-button">Cancel</a>
         </form>
     </div>
 </div>

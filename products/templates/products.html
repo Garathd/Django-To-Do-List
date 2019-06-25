@@ -1,34 +1,43 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> / <i class="breadcrumb-type">Products</i>
+
+    <hr />
+</div>
+
+
+<h1 class="center">Products Page</h1>
+&nbsp;
+
 <div class="row row-flex">
     {% for product in products %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-            <div class="panel-body">
-                
-                <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
+    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
+        <div class="panel-body">
 
-                <h3>{{ product.name }}</h3>
-                <p class="product-description">{{ product.description }}</p>
-                <p><strong>Price: €{{ product.price }}</strong></p>
+            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
 
-                <form method="post" action="{% url 'add_to_cart' product.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input name="quantity" type="hidden" value="1" class="form-control">
-                        <span class="input-group-btn">
+            <h3>{{ product.name }}</h3>
+            <p class="product-description">{{ product.description }}</p>
+            <p><strong>Price: €{{ product.price }}</strong></p>
+
+            <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="quantity" type="hidden" value="1" class="form-control">
+                    <span class="input-group-btn">
                             {% if account == 'free' and added == False %}
-                            <button class="btn btn-success" type="submit">Add to Cart</button>
+                            <button class="btn btn-default custom-button new-save-button" type="submit">Add to Cart</button>
                             {% elif added == True %}
-                            <a href="{% url 'view_cart' %}" class="btn btn-warning">Added</a>
+                            <a href="{% url 'view_cart' %}" class="btn btn-default custom-button warning-button">Added</a>
                             {% else %}
-                            <a href="{% url 'profile' %}" class="btn btn-danger">Purchased</a>
+                            <a href="{% url 'profile' %}" class="btn btn-default custom-button delete-cancel-button">Purchased</a>
                             {% endif %}
                         </span>
-                    </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

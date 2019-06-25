@@ -13,8 +13,8 @@ class UserProfileForm(forms.ModelForm):
         
 # UserLogin form which lets users log in to the website
 class UserLoginForm(forms.Form):
-    username_or_email = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username_or_email = forms.CharField(label="Enter a Username")
+    password = forms.CharField(widget=forms.PasswordInput, label="Enter a Password")
 
 # UserRegistration form which lets users log in to the website
 class UserRegistrationForm(UserCreationForm):

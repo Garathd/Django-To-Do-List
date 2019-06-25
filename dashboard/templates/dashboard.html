@@ -17,12 +17,12 @@
                 <p>Better workflow, keep what I need to do from paper and custom tasks according to projects and priority</p>
             </div>
             <div>
-                <div class="featured-break"></div>
+                <div class="spacing"></div>
                 &nbsp;
                 <div class="row">
                     <div class="col-md-4">
                         <h6 style="color:red">High Priority:</h6>
-                        <p class="font-weight-bold red">{{ high }}</p>
+                        <p class="font-weight-bold">{{ high }}</p>
                     </div>
                     <div class="col-md-4">
                         <h6 style="color:orange">Medium Priority:</h6>
@@ -63,8 +63,8 @@
                 <h6>Personal:</h6>
                 <p class="font-weight-bold">{{ personal }}</p>
                 <div class="featured-break"></div>
-                <p><a href="{% url 'get_projects' %}" class="btn btn-success"><span class="glyphicon glyphicon-list-alt"></span> View Projects</a></p>
-                <p><a href="{% url 'create_project' %}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Create Project</a></p>
+                <p><a href="{% url 'get_projects' %}" class="btn btn-default custom-button edit-options-button"><span class="glyphicon glyphicon-list-alt"></span> View Projects</a></p>
+                <p><a href="{% url 'create_project' %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-pencil"></span> Create Project</a></p>
             </div>
         </div>
     </div>

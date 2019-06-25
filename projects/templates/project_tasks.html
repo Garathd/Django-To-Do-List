@@ -1,11 +1,9 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-    <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> /
-        <a href="{% url 'get_projects' %}"> Projects</a> / {{ project }} / <i class="breadcrumb-type">{{ task_type }}</i>
-        <hr />
-    </div>
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> /
+    <a href="{% url 'get_projects' %}"> Projects</a> / {{ project }} / <i class="breadcrumb-type">{{ task_type }}</i>
+    <hr />
 </div>
 
 {% if result %}
@@ -19,7 +17,9 @@
 
 <h1 class="center"><strong>Project:</strong> {{project}}</h1>
 
-&nbsp; {% if task_count != 0 %}
+<div class="spacing"></div>
+
+{% if task_count != 0 %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -34,77 +34,69 @@
               <option value="progress">In Progress</option>
               <option value="done">Done</option>
             </select>
-            <input id="search_button" class="btn btn-primary" type="submit" value="Search" />
+            <button class="btn btn-default custom-button search-button" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
         </form>
     </div>
 </div>
-{% endif %}
-
-
-
-<div class="row">
-    {% if tasks %} {% for task in tasks %}
-    <div class="task-list">
-        <div class="inner-task-list">
-            <div class="row">
-                <div class="col-md-12">
-
+{% endif %} {% if tasks %} {% for task in tasks %}
+<div class="task-list">
+    <div class="inner-task-list">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                {% if task.screenshot %}
+                <div class="screenshot" alt="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
                 </div>
+
+                {% else %}
+
+                <div class="screenshot" alt="placeholder" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
+
+                {% endif %}
             </div>
-            <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    {% if task.screenshot %}
-                    <div class="screenshot" alt="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
-                    </div>
+            <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12">
+                <p><span class="boldtext">Name:</span> {{task.name}}</p>
+                <p><span class="boldtext">Description:</span> {{ task.description }}</p>
+                <p><span class="boldtext">Status:</span> {{ task.status }}</p>
+                <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
+                <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
+                <hr />
 
-                    {% else %}
+                <p>
 
-                    <div class="screenshot" alt="placeholder" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
+                    <a href="{% url 'edit_task' task.id project_id %}" class="btn btn-default custom-button edit-options-button"><span class="glyphicon glyphicon-cog"></span> Edit</a>
 
-                    {% endif %}
-                </div>
-                <div class="col-md-7 col-sm-6 col-xs-12">
-                    <p><span class="boldtext">Name:</span> {{task.name}}</p>
-                    <p><span class="boldtext">Description:</span> {{ task.description }}</p>
-                    <p><span class="boldtext">Status:</span> {{ task.status }}</p>
-                    <p><span class="boldtext">Priority:</span> {{ task.priority }}</p>
-                    <p><span class="boldtext">Published on:</span> {{ task.published_date }} </p>
-                    <hr />
-                    <p>
+                    <a href="{% url 'delete_task' task.id %}" class="btn btn-default custom-button delete-cancel-button"><span class="glyphicon glyphicon-trash"></span> Delete</a>
 
-                        <a href="{% url 'edit_task' task.id project_id %}" class="btn btn-default"><span class="glyphicon glyphicon-cog"></span> Edit</a>
+                    <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-plus"></span> New</a>
+                </p>
+                <hr />
 
-                        <a href="{% url 'delete_task' task.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                        
-                        <a href="{% url 'create_task' project_id %}" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> New</a>
-                    </p>
-                    <hr />
-
-                </div>
-                <div class="col-md-2"></div>
             </div>
+            <div class="col-lg-1 col-md-12 col-sm-12 col-xs-12"></div>
         </div>
     </div>
-    {% endfor %} {% elif project_count != 0 %}
-    <div class="col-md-12">
-        <div class="no-content center">
-            <i class="far fa-smile"></i>
-            <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
-            <div class="create-new">
-                <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
-            </div>
-        </div>
-    </div>
-    {% else %}
-    <div class="col-md-12">
-        <div class="no-content center">
-            <i class="far fa-smile"></i>
-            <h4>You have no Tasks. Please add a task...</h4>
-            <div class="new-task">
-                <a href="{% url 'create_task' project_id %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Task</a>
-            </div>
-        </div>
-    </div>
-    {% endif %}
 </div>
-{% endblock %}
+{% endfor %}
+<br /> {% elif project_count != 0 %}
+<div class="col-md-12">
+    <div class="no-content center">
+        <i class="far fa-smile"></i>
+        <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
+        <div class="spacing"></div>
+        <div class="create-new">
+            <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-plus"></span> New Task</a>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="col-md-12">
+    <div class="no-content center">
+        <i class="far fa-smile"></i>
+        <h4>You have no Tasks. Please add a task...</h4>
+        <div class="spacing"></div>
+        <div class="new-task">
+            <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-plus"></span> New Task</a>
+        </div>
+    </div>
+</div>
+{% endif %} {% endblock %}

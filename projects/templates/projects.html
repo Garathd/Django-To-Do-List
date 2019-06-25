@@ -1,18 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 
-<div class="row">
-    <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / Projects / <i class="breadcrumb-type">{{ project_type }}</i>
 
-        <hr />
-    </div>
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> / Projects / <i class="breadcrumb-type">{{ project_type }}</i>
 </div>
 
-{% if result %}
+
+<hr /> {% if result %}
 <div class="alert alert-danger">
     <div class="messages">
         The trial version allows the creation of only 1 Project. Please buy the Pro Version from your profile page
-        <!--{% for message in messages %} {{ message }} {% endfor %}-->
     </div>
 </div>
 {% endif %}
@@ -21,15 +18,14 @@
 
 <h1 class="center">Projects Page</h1>
 
-
+{% if projects %}
 <div class="row">
     <div class="col-md-12">
-        <h3 class="create"><span><a href="{% url 'create_project' %}">Create a new Project</a></span></h3>
+        <a href="{% url 'create_project' %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-plus"></span> New Project</a>
     </div>
     <hr />
 </div>
-
-{% if project_count != 0 %}
+{% endif %} {% if project_count != 0 %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -41,7 +37,7 @@
               <option value="education" >Education</option>
               <option value="personal" >Personal</option>
             </select>
-            <input id="search_button" class="btn btn-primary" type="submit" value="Search" />
+            <button class="btn btn-default custom-button search-button" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
         </form>
     </div>
 </div>
@@ -65,8 +61,8 @@
                 <p><span class="boldtext">Type: </span> {{ project.status }}</p>
             </div>
             <p>
-                <a href="{% url 'project_info' project.id %}" class="btn btn-primary"><span class="glyphicon glyphicon-cog"></span> Options</a>
-                <a href="{% url 'view_only' project.id %}" class="btn btn-success"><span class="glyphicon glyphicon-list"></span> Tasks</a>
+                <a href="{% url 'project_info' project.id %}" class="btn btn-default custom-button edit-options-button"><span class="glyphicon glyphicon-cog"></span> Options</a>
+                <a href="{% url 'view_only' project.id %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-list"></span> Tasks</a>
             </p>
         </div>
     </div>
@@ -75,8 +71,9 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Projects categorized as: "{{ project_type }}"</h4>
+            &nbsp;
             <div class="create-new">
-                <a href="{% url 'create_project' %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Project</a>
+                <a href="{% url 'create_project' %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-plus"></span> New Project</a>
             </div>
         </div>
     </div>
@@ -85,8 +82,9 @@
         <div class="no-content center">
             <i class="far fa-smile"></i>
             <h4>You have no Projects. Please add a project...</h4>
+            &nbsp;
             <div class="create-new">
-                <a href="{% url 'create_project' %}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> New Project</a>
+                <a href="{% url 'create_project' %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-plus"></span> New Project</a>
             </div>
         </div>
     </div>

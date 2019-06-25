@@ -1,9 +1,8 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row">
-    <div class="col-md-12">
-        <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project.name}}
-        <hr />
-    </div>
+
+<div class="breadcrumbs">
+    <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project.name}}
+    <hr />
 </div>
 
 <h1 class="center"><strong>Modify Project:</strong> {{ project.name }}</h1>
@@ -29,8 +28,8 @@
         </p>
         <p><span class="boldtext">Published on: </span> {{ project.published_date }} </p>
         <hr />
-        <a href="{% url 'edit_project' project.id %}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
-        <a href="{% url 'delete_project' project.id %}" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+        <a href="{% url 'edit_project' project.id %}" class="btn btn-default custom-button edit-options-button"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+        <a href="{% url 'delete_project' project.id %}" class="btn btn-default custom-button delete-cancel-button"><span class="glyphicon glyphicon-trash"></span> Delete</a>
     </div>
     <div class="col-md-2"></div>
 </div>

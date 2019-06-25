@@ -1,15 +1,34 @@
-{% extends "base.html" %}
-{% load bootstrap_tags %}
-{% block content %}
-    <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
-        <fieldset class="form-group">
-            <legend>Login</legend>
-            {% csrf_token %}
-            {{ user_form | as_bootstrap }}
-            
-             <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
-             
-            <button type="submit" class="btn btn-primary">Login</button>
-        </fieldset>
-    </form>
+{% extends "credentials.html" %} {% load bootstrap4 %} {% block content %}
+
+<div class="section"></div>
+<h5 class="login-heading">Please, login into your account</h5>
+
+<div class="spacing"></div>
+
+<div class="container">
+    <div class="credential-list">
+
+        <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
+            <div class="form-group">
+                {% csrf_token %} 
+                {% bootstrap_form  user_form %}
+
+                {% buttons %}
+                <button type="submit" class="btn btn-default custom-button edit-options-button">Login</button>
+                {% endbuttons %}
+                <div class="forgot-password">
+                    <a href="{% url 'password_reset' %}">Forgot my password</a>
+                </div>
+
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div class="spacing"></div>
+
+<div class="user-action-link">
+    <a href="{% url 'register' %}">Create account</a>
+</div>
 {% endblock %}
