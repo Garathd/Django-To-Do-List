@@ -47,17 +47,17 @@
                 <div class="alert-message block-message error" id="stripe-error-message"></div>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 left">
                 {{ order_form | as_bootstrap }}
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 right">
                 {{ payment_form | as_bootstrap }}
             </div>
 
             {% csrf_token %}
             <div class="form-group col-md-12">
-                <input class=" btn btn-default custom-button new-save-button" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                <button class=" btn btn-default custom-button new-save-button right" id="submit_payment_btn" type="submit"><i class="material-icons page-icon left">euro</i>Pay</button>
             </div>
         </form>
     </div>

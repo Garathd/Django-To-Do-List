@@ -41,8 +41,8 @@
             <p><strong>Current Projects: </strong> {{ project_count }}</p>
             <p><strong>Current Tasks: </strong> {{ task_count }}</p>
             <hr />
-            <a href="{% url 'edit_profile' %}" class="btn btn-default custom-button edit-options-button"><span class="glyphicon glyphicon-pencil"></span> Edit</a> {% if i.account == 'free' %}
-            <a href="{% url 'products' %}" class="btn btn-default custom-button new-save-button"><span class="glyphicon glyphicon-euro"></span> Buy Pro Version</a> {% endif %} {% endfor %}
+            <a href="{% url 'edit_profile' %}" class="btn btn-default custom-button edit-options-button"><i class="material-icons page-icon left">edit</i> Edit</a> {% if i.account == 'free' %}
+            <a href="{% url 'products' %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">euro</i> Buy Pro Version</a> {% endif %} {% endfor %}
         </div>
     </div>
 </div>

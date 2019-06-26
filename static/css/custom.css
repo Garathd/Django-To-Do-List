@@ -16,7 +16,7 @@
   font-size: 1em !important; }
 
 .custom-nav {
-  background: #3f51b5 !important;
+  background: #3949AB !important;
   color: #FFFFFF !important;
   padding: 0 1.2em !important; }
 
@@ -25,6 +25,10 @@
 
 .nav-link:hover {
   height: 70px !important; }
+
+.nav-link:focus, .nav-link:hover {
+  color: #3949AB !important;
+  background: #FFF !important; }
 
 .navbar-toggler {
   border-color: #FFF !important;
@@ -117,6 +121,21 @@ hr {
   clear: both !important;
   vertical-align: middle !important; }
 
+.menu-icon {
+  margin-right: 0.2em !important; }
+
+.page-icon {
+  margin: -3px 2px 0 0 !important; }
+
+.cart-left {
+  margin-right: 2% !important; }
+
+left {
+  float: left !important; }
+
+right {
+  float: right !important; }
+
 main {
   flex: 1 0 auto !important; }
 
@@ -126,7 +145,7 @@ main {
   margin-top: 0.1em !important; }
 
 .credentials {
-  background-color: #3f51b5 !important;
+  background-color: #3949AB !important;
   text-align: center !important; }
 
 .login-heading {

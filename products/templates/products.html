@@ -27,11 +27,11 @@
                     <input name="quantity" type="hidden" value="1" class="form-control">
                     <span class="input-group-btn">
                             {% if account == 'free' and added == False %}
-                            <button class="btn btn-default custom-button new-save-button" type="submit">Add to Cart</button>
+                            <button class="btn btn-default custom-button new-save-button" type="submit"><i class="material-icons page-icon left">shopping_cart</i>Add to Cart</button>
                             {% elif added == True %}
-                            <a href="{% url 'view_cart' %}" class="btn btn-default custom-button warning-button">Added</a>
+                            <a href="{% url 'view_cart' %}" class="btn btn-default custom-button warning-button"><i class="material-icons page-icon left">remove_shopping_cart</i>Added</a>
                             {% else %}
-                            <a href="{% url 'profile' %}" class="btn btn-default custom-button delete-cancel-button">Purchased</a>
+                            <a href="{% url 'profile' %}" class="btn btn-default custom-button delete-cancel-button"><i class="material-icons page-icon left">done</i>Purchased</a>
                             {% endif %}
                         </span>
                 </div>
