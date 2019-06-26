@@ -3,9 +3,18 @@
 <div class="spacing"></div>
 
 <div class="row">
-    <div class="col-md-12 text-center">
-        <h1>Trackx</h1>
+    <div class="col-md-12 text-center dashboard-heading">
+        <h1><a class="navbar-brand dashboard-brand" href="/">Trackx <i class="material-icons logo">assignment</i></a></h1>
+
+        <div class="spacing"></div>
+
         <p>Trackx is a web app to allow users to set up tasks for various projects to organize workflow</p>
+        {% if account == 'pro' %}
+        <p>Welcome <a href="{% url 'profile' %}" title="View your Profile" alt="View your Profile">{{ username }}</a> you have a premium account</p>
+        {% else %}
+        <p>Welcome <a href="{% url 'profile' %}" title="View your Profile" alt="View your Profile">{{ username }}</a> this is a trial version of Trackx. You can purchase pro version</p>
+
+        <a href="{% url 'products' %}" class="btn btn-default custom-button new-save-button" type="submit"><i class="material-icons page-icon left">shopping_cart</i>Buy</a> {% endif %}
     </div>
 </div>
 
@@ -13,11 +22,12 @@
 
 <div class="row">
     <div class="col-md-6 text-center featured">
-        <div class="featured-box">
+        <div class="featured-box featured-tasks">
             <div>
                 <h3>Tasks</h3>
-                <p>Create tasks and organize what I need to do</p>
-                <p>Better workflow, keep what I need to do from paper and custom tasks according to projects and priority</p>
+                <hr />
+                <p><strong>Create tasks inside your projects</strong></p>
+                <p>Better workflow, customize tasks according to projects and priority</p>
             </div>
             <div>
                 <div class="spacing"></div>
@@ -39,6 +49,7 @@
                 <hr />
                 <div class="featured-break"></div>
                 <h4>Task Stats</h4>
+                <div class="spacing"></div>
                 <h6>To Do:</h6>
                 <p class="font-weight-bold">{{ todo }}</p>
                 <h6>In Progress:</h6>
@@ -49,27 +60,26 @@
         </div>
     </div>
 
-    <div class="col-md-6 text-center featured">
+    <div class="col-md-6 text-center featured featured-projects">
         <div class="featured-box">
-            <div>
-                <h3>Projects</h3>
-                <p>The latest projects that I'm working on</p>
-                <p>From Website Development to College Work to General tasks and Reminders. Constantly trying to get things done.</p>
-            </div>
-            <div>
-                <hr />
-                <h4>Project Stats</h4>
-                <h6>Work:</h6>
-                <p class="font-weight-bold">{{ work }}</p>
-                <h6>Education:</h6>
-                <p class="font-weight-bold">{{ education }}</p>
-                <h6>Personal:</h6>
-                <p class="font-weight-bold">{{ personal }}</p>
-                <div class="featured-break"></div>
-                <p><a href="{% url 'get_projects' %}" class="btn btn-default custom-button edit-options-button"><i class="material-icons page-icon left">description</i>View Projects</a></p>
-                <p><a href="{% url 'create_project' %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">add</i>Create Project</a></p>
-            </div>
+            <h3>Projects</h3>
+            <hr />
+            <p><strong>Create Projects and Plan</strong></p>
+            <p>From Work, Education and Personal. Never miss a task again</p>
+            &nbsp;
+            <h4>Project Stats</h4>
+            <div class="spacing"></div>
+            <h6>Work:</h6>
+            <p class="font-weight-bold">{{ work }}</p>
+            <h6>Education:</h6>
+            <p class="font-weight-bold">{{ education }}</p>
+            <h6>Personal:</h6>
+            <p class="font-weight-bold">{{ personal }}</p>
+            <div class="featured-break"></div>
+            <p><a href="{% url 'get_projects' %}" class="btn btn-default custom-button edit-options-button"><i class="material-icons page-icon left">description</i>View Projects</a></p>
+            <p><a href="{% url 'create_project' %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">add</i>Create Project</a></p>
         </div>
     </div>
+
 </div>
 {% endblock %}

@@ -10,6 +10,15 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         fields = ['description', 'picture']
+        widgets = {
+            'description': forms.TextInput(attrs={
+                'class':'form-control',
+                'placeholder': 'Please enter a profile description'
+            }),
+            'picture': forms.ClearableFileInput(attrs={
+                'class':'btn btn-default auto-width'
+            }),
+        }
         
 # UserLogin form which lets users log in to the website
 class UserLoginForm(forms.Form):

@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load bootstrap_tags %} {% block content %}
+{% extends "base.html" %} {% load bootstrap4 %} {% block content %}
 
 <div class="breadcrumbs">
         <a href="{% url 'dashboard' %}">Home</a> / 
@@ -12,8 +12,8 @@
 
 
 <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{ form | as_bootstrap }}
-    <button type="submit" class="btn btn-default custom-button new-save-button">Save</button>
-    <a href="{% url 'profile' %}" class="btn btn-default custom-button delete-cancel-button">Cancel</a>
+    {% csrf_token %} {% bootstrap_form form %}
+    <button type="submit" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">done</i>Save</button>
+    <a href="{% url 'profile' %}" class="btn btn-default custom-button delete-cancel-button"><i class="material-icons page-icon left">cancel</i>Cancel</a>
 </form>
 {% endblock %}
