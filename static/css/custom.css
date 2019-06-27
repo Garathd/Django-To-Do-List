@@ -167,6 +167,9 @@ hr {
   background-color: #3949AB !important;
   color: #FFF !important; }
 
+.page-title {
+  margin: 1.2em 0 !important; }
+
 main {
   flex: 1 0 auto !important; }
 
