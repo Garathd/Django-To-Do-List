@@ -12,10 +12,16 @@ from accounts.models import UserProfile
 #Create or Edit a Task
 def create_or_edit_task(request, pk=None, project=None):
     
-    
     project_info = Project.objects.filter(id=project)
-    tasks = Task.objects.filter(project=project)
     
+    # This is to prevent another user accessing another users data
+    for pi in project_info:
+        user_name = pi.user
+        if user_name != request.user:
+            return redirect(reverse('get_projects'))
+
+    
+    tasks = Task.objects.filter(project=project)
     tasks = Task.objects.filter(project=project,pk=pk)
     
     task_name = False
