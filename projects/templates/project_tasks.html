@@ -10,7 +10,6 @@
 <div class="alert alert-danger">
     <div class="messages">
         The trial version allows the creation of only 3 Tasks. Please buy the Pro Version from your profile page
-        <!--{% for message in messages %} {{ message }} {% endfor %}-->
     </div>
 </div>
 {% endif %}
@@ -40,7 +39,10 @@
         </form>
     </div>
 </div>
-{% endif %} {% if tasks %} {% for task in tasks %}
+{% endif %} 
+
+{% if tasks %} 
+{% for task in tasks %}
 <div class="task-list">
     <div class="inner-task-list">
         <div class="row">
@@ -75,7 +77,7 @@
 </div>
 {% endfor %}
 
-<br /> {% elif project_count != 0 %}
+{% elif project_count != 0 %}
 
 <div class="spacing"></div>
 
@@ -83,7 +85,7 @@
     <div class="no-content center">
         <i class="far fa-smile"></i>
         <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
-        <div class="spacing"></div>
+        &nbsp;
         <div class="create-new">
             <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">add</i> New Task</a>
         </div>
@@ -98,7 +100,7 @@
     <div class="no-content center">
         <i class="far fa-smile"></i>
         <h4>You have no Tasks. Please add a task...</h4>
-        <div class="spacing"></div>
+        &nbsp;
         <div class="new-task">
             <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">add</i> New Task</a>
         </div>
