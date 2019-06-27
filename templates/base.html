@@ -30,19 +30,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item">
+                <li class="nav-item menu-link">
                     <a class="nav-link" href="{% url 'get_projects' %}">Projects<i class="material-icons menu-icon left">description</i></a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile<i class="material-icons menu-icon left">person</i></a>
+                <li class="nav-item menu-link"><a class="nav-link" href="{% url 'profile' %}">Profile<i class="material-icons menu-icon left">person</i></a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout<i class="material-icons menu-icon left">power_settings_new</i></a>
+                <li class="nav-item menu-link"><a class="nav-link" href="{% url 'logout' %}">Logout<i class="material-icons menu-icon left">power_settings_new</i></a>
                 </li>
                 {% if product_count > 0 %}
-                <li class="nav-item">
+                <li class="nav-item menu-link">
                     <a class="nav-link" href="{% url 'view_cart' %}">Cart
                                   <i class="material-icons menu-icon  left cart-fix">shopping_cart</i>
                                   <div class="badge badge-warning">{{ product_count }}</div>

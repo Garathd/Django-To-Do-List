@@ -12,7 +12,6 @@
 <div class="breadcrumbs">
     <a href="{% url 'dashboard' %}">Home</a> /
     <i class="breadcrumb-type">Checkout</i>
-
     <hr />
 </div>
 
@@ -20,16 +19,17 @@
     <div class="col-md-12">
         <h1 class="center page-title">Total Payment: €{{ total }}</h1>
     </div>
-    <br> &nbsp;
 </div>
 
+&nbsp;
 
 <div class="row">
+    
     {% for item in cart_items %}
     <div class="col-md-6">
         <div class="panel-body">
             <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ item.product.image }}')"></div>
-
+            <div class="spacing"></div>
             <div class="caption">
                 <h3>{{ item.product.name }}</h3>
                 <p class="product-description">{{ item.product.description }}</p>
@@ -39,27 +39,26 @@
         </div>
         <hr />
     </div>
+    
     {% endfor %}
+    
     <div class="col-md-6">
         <form method="post" id="payment-form" action="{% url 'checkout' %}">
-
             <div id="credit-card-errors" style="display: none;">
                 <div class="alert-message block-message error" id="stripe-error-message"></div>
             </div>
-
             <div class="form-group col-md-6 left">
                 {{ order_form | as_bootstrap }}
             </div>
-
             <div class="form-group col-md-6 right">
                 {{ payment_form | as_bootstrap }}
             </div>
-
             {% csrf_token %}
             <div class="form-group col-md-12">
                 <button class=" btn btn-default custom-button new-save-button right" id="submit_payment_btn" type="submit"><i class="material-icons page-icon left">euro</i>Pay</button>
             </div>
         </form>
     </div>
+    
 </div>
 {% endblock %}

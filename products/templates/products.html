@@ -2,7 +2,6 @@
 
 <div class="breadcrumbs">
     <a href="{% url 'dashboard' %}">Home</a> / <i class="breadcrumb-type">Products</i>
-
     <hr />
 </div>
 
@@ -11,11 +10,13 @@
 &nbsp;
 
 <div class="row row-flex">
+
     {% for product in products %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
         <div class="panel-body">
-
             <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ product.image }}')"></div>
+
+            <div class="spacing"></div>
 
             <h3>{{ product.name }}</h3>
             <p class="product-description">{{ product.description }}</p>
@@ -33,11 +34,12 @@
                             {% else %}
                             <a href="{% url 'profile' %}" class="btn btn-default custom-button delete-cancel-button"><i class="material-icons page-icon left">done</i>Purchased</a>
                             {% endif %}
-                        </span>
+                    </span>
                 </div>
             </form>
         </div>
     </div>
     {% endfor %}
+    
 </div>
 {% endblock %}
