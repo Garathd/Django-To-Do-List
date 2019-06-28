@@ -139,15 +139,15 @@ Django is the Python Framework I’m using for this application
 
 ### CSS
 
-Im using Bootstrap for my CSS but i'm thinking I should look more into using Materialize in conjunction with Bootstrap 4
+I'm using SCSS to build my css style sheets and probably a little unconventionally I'm using [Materialize](https://materializecss.com/) and also [Bootstrap 4](https://getbootstrap.com/). To be honest though it doesn't seem to have any adverse effects and over all looks better and is more responsive and visually pleasing out of the box when used together than individually. It was initially a mistake on my part but ended up looking pretty good. I also did a little research and decided to use the two of them after reading this [article](https://stackoverflow.com/questions/28613848/is-it-possible-to-integrate-materializecss-into-bootstrap). I also tried Material Design for bootstrap but wasn't happy with the way it looked
 
 ### JQuery
 
-Using Minimal at the moment should really style this up a bit better
+I have only used minimal JQuery. I have used it for the scroll to top button, the mobile menu and for select options for the forms in materialize.
 
 ### Gulp
 
-Will be using this to convert SCSS to CSS
+Using Gulp to watch out for SCSS changes and converting SCSS to CSS
 
 ## Testing
 
