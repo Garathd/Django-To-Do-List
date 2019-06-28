@@ -12,6 +12,7 @@ from accounts.models import UserProfile
 #Create or Edit a Task
 def create_or_edit_task(request, pk=None, project=None):
     
+    # Get project information
     project_info = Project.objects.filter(id=project)
     
     # This is to prevent another user accessing another users data
@@ -20,11 +21,12 @@ def create_or_edit_task(request, pk=None, project=None):
         if user_name != request.user:
             return redirect(reverse('get_projects'))
 
-    
-    tasks = Task.objects.filter(project=project)
     tasks = Task.objects.filter(project=project,pk=pk)
     
+    # If new task set task_name to false
     task_name = False
+    
+    # For editing a project
     for ti in tasks:
         task_name = ti.name
 
@@ -34,6 +36,8 @@ def create_or_edit_task(request, pk=None, project=None):
         project_name = pi.name
     
     info = UserProfile.objects.filter(user=request.user)
+    
+    
     for i in info:
         account_type = i.account
     
