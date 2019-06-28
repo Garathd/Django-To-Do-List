@@ -109,65 +109,61 @@ def create_or_edit_project(request, pk=None):
     
     # This is to prevent another user accessing another users data
     if pk:
-            project_info = Project.objects.filter(pk=pk)
-            for pi in project_info:
+            project_stuff = Project.objects.filter(pk=pk)
+            for pi in project_stuff:
                 project_user = pi.user
                     
             if project_user != request.user:
                 return redirect(reverse('get_projects'))
-                
-    # This now checks through the information of the correct user
-    else:
-        if pk:
-            
+
             # Get the project information
             project_info = Project.objects.filter(user__username=request.user, pk=pk)
             for pi in project_info:
                 project_name = pi.name
-        else: 
-            # Default for new project
+    else: 
+           # Default for new project
             project_name = False
         
-        # Get UserProfile information
-        info = UserProfile.objects.filter(user=request.user)
-        for i in info:
-            account_type = i.account
+    # Get UserProfile information
+    info = UserProfile.objects.filter(user=request.user)
+    for i in info:
+        account_type = i.account
             
-        # Get all the projects associated with current user    
-        projects = Project.objects.filter(user__username=request.user)
+    # Get all the projects associated with current user    
+    projects = Project.objects.filter(user__username=request.user)
     
-        # Set the project count
-        for p in projects:
-            project_count = project_count + 1
+    # Set the project count
+    for p in projects:
+        project_count = project_count + 1
     
-        # Getting the project information
-        project = get_object_or_404(Project, pk=pk) if pk else None
-        if request.method == "POST":
+    # Getting the project information
+    project = get_object_or_404(Project, pk=pk) if pk else None
+    if request.method == "POST":
             
-            # Checking if the user has a free account
-            if account_type == "free" and project_count >= 1 and pk == None:
+        # Checking if the user has a free account
+        if account_type == "free" and project_count >= 1 and pk == None:
     
-                return render(request,'projects.html',{
-                    'projects': projects,
-                    'result': "trial"
-                })
-            else:
-                
-                # Rendering the Project Form
-                form = ProjectForm(request.POST, request.FILES, instance=project)
-                if form.is_valid():
-                    project = form.save(commit=False)
-                    
-                    #Setting the user of the project
-                    project.user = request.user
-                    
-                    project.save()
-                    return redirect(reverse('project_info', 
-                    kwargs={
-                        'pk': project.id
-                    }))
+            return render(request,'projects.html',{
+                'projects': projects,
+                'result': "trial"
+            })
+            
         else:
-            form = ProjectForm(instance=project)
+            # Rendering the Project Form
+            form = ProjectForm(request.POST, request.FILES, instance=project)
+            if form.is_valid():
+                project = form.save(commit=False)
+                    
+                #Setting the user of the project
+                project.user = request.user
+                    
+                project.save()
+                return redirect(reverse('project_info', 
+                kwargs={
+                    'pk': project.id
+                }))
+            else:
+                form = ProjectForm(instance=project)
             
         return render(request, 'projectform.html', {
             'form': form,
@@ -271,7 +267,7 @@ def view_only(request, pk=None):
         # Set default select option
         task_type = "Show All"
         
-        # Count the amount of tasks for associated project
+        # Count the amount of tasks for associated
         task_count = Task.objects.filter(project=project).count()
         
         return render(request, "project_tasks.html", {
