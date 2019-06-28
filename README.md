@@ -35,6 +35,10 @@ User stories:
 
 ### Front-End
 
+My design inspiration was essentially to bring my paper to do lists into an interactive application. I have a few small very basic sketches of more or less what I had un my head and how I wanted the site to look. I did my sketches using [Adobe XD](https://www.adobe.com/ie/products/xd.html). Screenshots can be found in the [mockups](https://github.com/Garathd/django-project/tree/master/mockups/images) folder and original Adobe XD Files can be found [here](https://github.com/Garathd/django-project/tree/master/mockups/xd-files).
+
+I was considering also doing some mobile resolution mockups but its more or less the same except for the mobile menu and certain ways elements are positioned
+
 ***Login/Register Pages*** These pages are more or less the same design wise. If there is an issue with either login or registration then a brief information message should appear on the screen. New users will be directed to the home page.
 
 ***Profile Page*** This page contains user profile information and lets users change their profile picture and description. This page also lets users purchase the pro version of the app.
