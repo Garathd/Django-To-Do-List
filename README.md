@@ -20,7 +20,7 @@ The requirements are:
 - To be able to search  projects by Work, Educational or Personal
 - To be able to view only the tasks for a specific project
 - To be able to search tasks by High, Medium or Low Priority as well as To Do, In Progress and Done(Not sure about Done just yet)
-- To be able to assign a project a Job, A Status and a Priority
+- To be able to assign a project a Status and a Priority
 
 User stories:
 
@@ -43,11 +43,58 @@ For local testing i'm using sqlite and for live version I'm using Postgre SQL wh
 
 ***UserProfile***
 - user : _This is a one to one field and is linked to the auth user model_
-- description: _This is just a description of users bio info which is set from the profile page_
-- picture: _This is for a user to upload an image from the profile page_
-- account: _This is set to default as free and changes to pro when a user purchases the pro version_
+- description : _This is just a description of users bio info which is set from the profile page_
+- picture : _This is for a user to upload an image from the profile page_
+- account : _This is set to default as free and changes to pro when a user purchases the pro version_
 
 
+#### Checkout Models
+
+***Order***
+- full name : _This is the name of the user_
+- phone number : _This is the phone number of the user_
+- country : _This is the country of the user_
+- postcode : _This is the postcode of the user_
+- city : _This is the city of the user_
+- street address1 : _This is the street address of the user_
+- street address2 : _This is the street address of the user_
+- county : _This is the county of the user_
+- date : _This is for the current date time at time of order_
+
+***OrderLineItem***
+- order : _This is a foreign key of previous model order_
+- product : _This is a foreign key of the Product Model_
+- quantity : _This is to store the amount of items ordered_
+
+
+#### Product Model
+
+***Product***
+- name : _This is for product name_
+- description : _This is for product description_
+- price : _This is for product price_
+- image : _This is for product image_
+
+
+#### Project Model
+
+***Project***
+- name : _This is for project name_
+- description : _This is for project description_
+- status : _This is for the status. Choosen from either Work, Education or Personal_
+- published date : _This is for the original project creation time_
+
+
+#### Task Model
+
+***Task***
+- name : _This is for the task name_
+- description : _This is for the task description_
+- project : _This is a foreign key of Project_
+- status : _This is for the status. Choosen from either To Do, In Progress or Done_
+- priority : _This is for the status. Choosen from either Low, Medium or High_
+- screenshot : _This is to allow users to upload a screenshot for a task_
+- published date : _This is for the original task creation time_
 
 
 ## Features
@@ -173,12 +220,10 @@ Each app has associated tests. The first app is the accounts app, so to run test
 - ***Test Task Model***: This tests the task model by creating both a new project and associated task
 
 
-
 ## Deployment
 
 ### Heroku Deployment Steps
 
-DEFAULT STEPS: NEED TO CHANGE THIS AND EXPAND AND MENTION MANUAL DEPLOYMENT FOR LIVE SITE!!!!!!!!
 1. Create a new app
 2. Install [PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
 3. Add PostgreSQL Database url to the config vars
