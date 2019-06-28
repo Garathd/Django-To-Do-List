@@ -35,6 +35,24 @@ User stories:
 
 ### Front-End
 
+***Login/Register Pages*** These pages are more or less the same design wise. If there is an issue with either login or registration then a brief information message should appear on the screen. New users will be directed to the home page.
+
+***Profile Page*** This page contains user profile information and lets users change their profile picture and description. This page also lets users purchase the pro version of the app.
+
+***Dashboard Page*** This page shows the user both project and task information and also informs the user of their account type. Whether it is the pro version or the trial version of the app. Trial users will have an additional option to purchase the pro version of the app.
+
+***Projects Page*** This page should only allow one project for a free user and unlimited projects for pro users. The page should also let users filter by project type and also options to edit Project and option to view Tasks for a specific project
+
+***Project Info Page*** This page shows more project specific info as well as lets a user edit or delete a project
+
+***Project Task Page*** This page shows all tasks associated with a specific project. It lets users edit, delete and create new tasks. The tasks on this page can be filtered by status and priority.
+
+***Product Page*** This page contains Pro Version of the app. The page and code is setup in a way to only allow users to purchase the pro version only 1 time. If a user has a trial version of the app they will have the option to add to cart. If the product is added to the cart already then the add to cart button is replaced by an added button which redirects the user to the cart page. If the pro version is already bought the button is replaced by a purchased button which redirects a user back to their profile page
+
+***Cart Page*** This page is only accessible if an item is in the cart otherwise it redirects back to the profile page. Also if an item is in the cart it should appear as a menu item. The cart page lets a user remove the item or else continue to the checkout
+
+***Checkout Page*** This page lets the user purchase the pro version of the app using stripe. If there is no items in the cart then the user is redirected back to their profile page
+
 ### Back-End
 
 For local testing i'm using sqlite and for live version I'm using Postgre SQL which comes as an add on with Heroku.
