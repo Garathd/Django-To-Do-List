@@ -20,7 +20,7 @@ The requirements are:
 - To be able to search  projects by Work, Educational or Personal
 - To be able to view only the tasks for a specific project
 - To be able to search tasks by High, Medium or Low Priority as well as To Do, In Progress and Done(Not sure about Done just yet)
-- To be able to assign a project a Job, A Status and a Priority
+- To be able to assign a project a Status and a Priority
 
 User stories:
 
@@ -35,21 +35,101 @@ User stories:
 
 ### Front-End
 
+***Login/Register Pages*** These pages are more or less the same design wise. If there is an issue with either login or registration then a brief information message should appear on the screen. New users will be directed to the home page.
+
+***Profile Page*** This page contains user profile information and lets users change their profile picture and description. This page also lets users purchase the pro version of the app.
+
+***Dashboard Page*** This page shows the user both project and task information and also informs the user of their account type. Whether it is the pro version or the trial version of the app. Trial users will have an additional option to purchase the pro version of the app.
+
+***Projects Page*** This page should only allow one project for a free user and unlimited projects for pro users. The page should also let users filter by project type and also options to edit Project and option to view Tasks for a specific project
+
+***Project Info Page*** This page shows more project specific info as well as lets a user edit or delete a project
+
+***Project Task Page*** This page shows all tasks associated with a specific project. It lets users edit, delete and create new tasks. The tasks on this page can be filtered by status and priority.
+
+***Product Page*** This page contains Pro Version of the app. The page and code is setup in a way to only allow users to purchase the pro version only 1 time. If a user has a trial version of the app they will have the option to add to cart. If the product is added to the cart already then the add to cart button is replaced by an added button which redirects the user to the cart page. If the pro version is already bought the button is replaced by a purchased button which redirects a user back to their profile page
+
+***Cart Page*** This page is only accessible if an item is in the cart otherwise it redirects back to the profile page. Also if an item is in the cart it should appear as a menu item. The cart page lets a user remove the item or else continue to the checkout
+
+***Checkout Page*** This page lets the user purchase the pro version of the app using stripe. If there is no items in the cart then the user is redirected back to their profile page
+
 ### Back-End
 
-For local testing i'm using sqlite and for live version I'm using Postgre SQL as an add with Heroku
-Not to sure what else to add here for now
+For local testing i'm using sqlite and for live version I'm using Postgre SQL which comes as an add on with Heroku.
+
+#### Accounts Model
+
+***UserProfile***
+- ***user*** : _This is a one to one field and is linked to the auth user model_
+- ***description*** : _This is just a description of users bio info which is set from the profile page_
+- ***picture*** : _This is for a user to upload an image from the profile page_
+- ***account*** : _This is set to default as free and changes to pro when a user purchases the pro version_
+
+
+#### Checkout Models
+
+***Order***
+- ***full name*** : _This is the name of the user_
+- ***phone number*** : _This is the phone number of the user_
+- ***country*** : _This is the country of the user_
+- ***postcode*** : _This is the postcode of the user_
+- ***city*** : _This is the city of the user_
+- ***street address1*** : _This is the street address of the user_
+- ***street address2*** : _This is the street address of the user_
+- ***county*** : _This is the county of the user_
+- ***date*** : _This is for the current date time at time of order_
+
+***OrderLineItem***
+- ***order*** : _This is a foreign key of previous model order_
+- ***product*** : _This is a foreign key of the Product Model_
+- ***quantity*** : _This is to store the amount of items ordered_
+
+
+#### Product Model
+
+***Product***
+- ***name*** : _This is for product name_
+- ***description*** : _This is for product description_
+- ***price*** : _This is for product price_
+- ***image*** : _This is for product image_
+
+
+#### Project Model
+
+***Project***
+- ***name*** : _This is for project name_
+- ***description*** : _This is for project description_
+- ***status*** : _This is for the status. Choosen from either Work, Education or Personal_
+- ***published date*** : _This is for the original project creation time_
+
+
+#### Task Model
+
+***Task***
+- ***name*** : _This is for the task name_
+- ***description*** : _This is for the task description_
+- ***project*** : _This is a foreign key of Project_
+- ***status*** : _This is for the status. Choosen from either To Do, In Progress or Done_
+- ***priority*** : _This is for the status. Choosen from either Low, Medium or High_
+- ***screenshot*** : _This is to allow users to upload a screenshot for a task_
+- ***published date*** : _This is for the original task creation time_
 
 
 ## Features
 
+The features of this application are as follows:
+
+- Ability to Register, Sign Into and Logout of an Account
+- Ability to Purchase Pro Version of the App using Credit Card Payments
+- Ability to Create, Edit, Delete and View Projects (Pro Version)
+- Ability to Create, Edit, Delete and View Tasks (Pro Version)
+- Ability to Create, Edit, Delete and View 1 Project (Trial Version)
+- Ability to Create, Edit, Delete and View 3 Tasks (Trial Version)
+- Ability to Edit Profile Page and Upload User Image
+
 ## Features Left to Implement and Future Features
 
-At the moment this application only caters to myself as the nature of this project is essentially a task and project management system that is for me to keep track on what I need to do. 
-
-In the future I hope to have additional users that can be setup to different projects as groups of users.
-
-Also a feature I just thought of could be good maybe upload a screenshot for a task and install pillow
+A feature I would like to implement in the future is for pro users to be able to invite users to a specific project and also assign them tasks.
 
 ## Technologies Used
 
@@ -59,15 +139,15 @@ Django is the Python Framework I’m using for this application
 
 ### CSS
 
-Im using Bootstrap for my CSS but i'm thinking I should look more into using Materialize in conjunction with Bootstrap 4
+I'm using SCSS to build my css style sheets and probably a little unconventionally I'm using [Materialize](https://materializecss.com/) and also [Bootstrap 4](https://getbootstrap.com/). To be honest though it doesn't seem to have any adverse effects and over all looks better and is more responsive and visually pleasing out of the box when used together than individually. It was initially a mistake on my part but ended up looking pretty good. I also did a little research and decided to use the two of them after reading this [article](https://stackoverflow.com/questions/28613848/is-it-possible-to-integrate-materializecss-into-bootstrap). I also tried Material Design for bootstrap but wasn't happy with the way it looked
 
 ### JQuery
 
-Using Minimal at the moment should really style this up a bit better
+I have only used minimal JQuery. I have used it for the scroll to top button, the mobile menu and for select options for the forms in materialize.
 
 ### Gulp
 
-Will be using this to convert SCSS to CSS
+Using Gulp to watch out for SCSS changes and converting SCSS to CSS
 
 ## Testing
 
@@ -164,12 +244,10 @@ Each app has associated tests. The first app is the accounts app, so to run test
 - ***Test Task Model***: This tests the task model by creating both a new project and associated task
 
 
-
 ## Deployment
 
 ### Heroku Deployment Steps
 
-DEFAULT STEPS: NEED TO CHANGE THIS AND EXPAND AND MENTION MANUAL DEPLOYMENT FOR LIVE SITE!!!!!!!!
 1. Create a new app
 2. Install [PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
 3. Add PostgreSQL Database url to the config vars
@@ -191,4 +269,8 @@ This application uses Amazon S3 Buckets to host my static css and js files as we
 
 ## Content and Media
 
+All Content and Media are uploaded by the users. Media content is up loaded to an Amazon S3 Bucket.
+
 ## Acknowledgements
+
+- [Heroku PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
