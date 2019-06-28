@@ -37,8 +37,17 @@ User stories:
 
 ### Back-End
 
-For local testing i'm using sqlite and for live version I'm using Postgre SQL as an add with Heroku
-Not to sure what else to add here for now
+For local testing i'm using sqlite and for live version I'm using Postgre SQL which comes as an add on with Heroku.
+
+#### Accounts Model
+
+***UserProfile***
+- user : _This is a one to one field and is linked to the auth user model_
+- description: _This is just a description of users bio info which is set from the profile page_
+- picture: _This is for a user to upload an image from the profile page_
+- account: _This is set to default as free and changes to pro when a user purchases the pro version_
+
+
 
 
 ## Features
