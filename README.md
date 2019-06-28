@@ -117,13 +117,19 @@ For local testing i'm using sqlite and for live version I'm using Postgre SQL wh
 
 ## Features
 
+The features of this application are as follows:
+
+- Ability to Register, Sign Into and Logout of an Account
+- Ability to Purchase Pro Version of the App using Credit Card Payments
+- Ability to Create, Edit, Delete and View Projects (Pro Version)
+- Ability to Create, Edit, Delete and View Tasks (Pro Version)
+- Ability to Create, Edit, Delete and View 1 Project (Trial Version)
+- Ability to Create, Edit, Delete and View 3 Tasks (Trial Version)
+- Ability to Edit Profile Page and Upload User Image
+
 ## Features Left to Implement and Future Features
 
-At the moment this application only caters to myself as the nature of this project is essentially a task and project management system that is for me to keep track on what I need to do. 
-
-In the future I hope to have additional users that can be setup to different projects as groups of users.
-
-Also a feature I just thought of could be good maybe upload a screenshot for a task and install pillow
+A feature I would like to implement in the future is for pro users to be able to invite users to a specific project and also assign them tasks.
 
 ## Technologies Used
 
@@ -263,4 +269,8 @@ This application uses Amazon S3 Buckets to host my static css and js files as we
 
 ## Content and Media
 
+All Content and Media are uploaded by the users. Media content is up loaded to an Amazon S3 Bucket.
+
 ## Acknowledgements
+
+- [Heroku PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
