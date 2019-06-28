@@ -278,3 +278,4 @@ All Content and Media are uploaded by the users. Media content is up loaded to a
 ## Acknowledgements
 
 - [Heroku PostgreSQL](https://elements.heroku.com/addons/heroku-postgresql)
+- [Adobe XD](https://www.adobe.com/ie/products/xd.html)
