@@ -51,50 +51,50 @@ For local testing i'm using sqlite and for live version I'm using Postgre SQL wh
 #### Checkout Models
 
 ***Order***
-- full name : _This is the name of the user_
-- phone number : _This is the phone number of the user_
-- country : _This is the country of the user_
-- postcode : _This is the postcode of the user_
-- city : _This is the city of the user_
-- street address1 : _This is the street address of the user_
-- street address2 : _This is the street address of the user_
-- county : _This is the county of the user_
-- date : _This is for the current date time at time of order_
+- ***full name*** : _This is the name of the user_
+- ***phone number*** : _This is the phone number of the user_
+- ***country*** : _This is the country of the user_
+- ***postcode*** : _This is the postcode of the user_
+- ***city*** : _This is the city of the user_
+- ***street address1*** : _This is the street address of the user_
+- ***street address2*** : _This is the street address of the user_
+- ***county*** : _This is the county of the user_
+- ***date*** : _This is for the current date time at time of order_
 
 ***OrderLineItem***
-- order : _This is a foreign key of previous model order_
-- product : _This is a foreign key of the Product Model_
-- quantity : _This is to store the amount of items ordered_
+- ***order*** : _This is a foreign key of previous model order_
+- ***product*** : _This is a foreign key of the Product Model_
+- ***quantity*** : _This is to store the amount of items ordered_
 
 
 #### Product Model
 
 ***Product***
-- name : _This is for product name_
-- description : _This is for product description_
-- price : _This is for product price_
-- image : _This is for product image_
+- ***name*** : _This is for product name_
+- ***description*** : _This is for product description_
+- ***price*** : _This is for product price_
+- ***image*** : _This is for product image_
 
 
 #### Project Model
 
 ***Project***
-- name : _This is for project name_
-- description : _This is for project description_
-- status : _This is for the status. Choosen from either Work, Education or Personal_
-- published date : _This is for the original project creation time_
+- ***name*** : _This is for project name_
+- ***description*** : _This is for project description_
+- ***status*** : _This is for the status. Choosen from either Work, Education or Personal_
+- ***published date*** : _This is for the original project creation time_
 
 
 #### Task Model
 
 ***Task***
-- name : _This is for the task name_
-- description : _This is for the task description_
-- project : _This is a foreign key of Project_
-- status : _This is for the status. Choosen from either To Do, In Progress or Done_
-- priority : _This is for the status. Choosen from either Low, Medium or High_
-- screenshot : _This is to allow users to upload a screenshot for a task_
-- published date : _This is for the original task creation time_
+- ***name*** : _This is for the task name_
+- ***description*** : _This is for the task description_
+- ***project*** : _This is a foreign key of Project_
+- ***status*** : _This is for the status. Choosen from either To Do, In Progress or Done_
+- ***priority*** : _This is for the status. Choosen from either Low, Medium or High_
+- ***screenshot*** : _This is to allow users to upload a screenshot for a task_
+- ***published date*** : _This is for the original task creation time_
 
 
 ## Features
