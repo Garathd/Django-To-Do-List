@@ -74,6 +74,12 @@ button:focus {
 hr {
   border-top: 1px solid #cccccc !important; }
 
+.error-pages {
+  color: #FFFFFF !important; }
+
+.error-pages > a {
+  color: #EEEEEE !important; }
+
 @media only screen and (max-width: 992px) {
   #navbarNav {
     background: #9FA8DA !important;

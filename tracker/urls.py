@@ -23,7 +23,6 @@ from home.views import index
 from .settings import MEDIA_ROOT
 from django.views.static import serve
 
-
 from products import urls as urls_products
 from products.views import all_products
 from cart import urls as urls_cart
