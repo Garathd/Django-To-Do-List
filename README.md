@@ -8,6 +8,24 @@ This project was inspired by the constant paper To Do lists that I seem to have 
 
 There are 2 versions of this application, The trial version and the pro version. When a user registers an account the trial version is used by default. The limitations of the trial version are that a user can only create 1 project and 3 associated tasks. The pro version can be purchased via the dashboard or else the profile page and it has no limitations to the amount of projects or tasks that a user can create. The pro version of the app is displayed in the product page. The way the app is set up a user cannot navigate to the cart or checkout pages if the pro version is not added to the cart and the cart currently has a limitation in place that only allows users to have 1 item in the cart.
 
+### Testing Accounts Credentials
+
+#### Pro Version of App
+
+- ***Username*** : admin
+- ***Password*** : adminaccess88
+
+#### Trial Version of App
+
+- ***Username*** : guest
+- ***Password*** : adminaccess88
+
+#### Stripe Test Payment Purchase (Testing API only)
+
+- ***Credit Card Number*** : 4242 4242 4242 4242
+- ***Security code (CVV)*** : 111
+
+
 ## UX Design
 
 My UX process was to analyze what I thought would streamline my original paper to do list and try to develop this into a user friendly website that is easy to navigate
@@ -34,6 +52,7 @@ User stories:
 - As a user I want to be able to create edit and delete projects and tasks
 - As a user I want to be able to filter projects by Work, Educational or Personal
 - As a user I want to be able to filter tasks by Priorities and Status
+
 
 ## Design
 
@@ -139,6 +158,7 @@ The features of this application are as follows:
 
 A feature I would like to implement in the future is for pro users to be able to invite users to a specific project and also assign them tasks.
 
+
 ## Technologies Used
 
 ### Python and Django
@@ -156,6 +176,7 @@ I have only used minimal JQuery. I have used it for the scroll to top button, th
 ### Gulp
 
 Using Gulp to watch out for SCSS changes and converting SCSS to CSS
+
 
 ## Testing
 
@@ -300,6 +321,7 @@ This application uses Amazon S3 Buckets to host my static css and js files as we
 ## Content and Media
 
 All Content and Media are uploaded by the users. Media content is up loaded to an Amazon S3 Bucket.
+
 
 ## Acknowledgements
 
