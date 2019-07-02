@@ -26,50 +26,62 @@ def create_or_edit_task(request, pk=None, project=None):
     # If new task set task_name to false
     task_name = False
     
-    # For editing a project
+    # Getting the task name
     for ti in tasks:
         task_name = ti.name
 
-    
+    # Getting project name and id
     for pi in project_info:
         project_id = pi.id
         project_name = pi.name
     
+    # Getting user profile information
     info = UserProfile.objects.filter(user=request.user)
     
-    
+    # Seeing if the user account is pro or trial version
     for i in info:
         account_type = i.account
     
     if project != None:
         project_instance = get_object_or_404(Project, pk=project)
 
+    # Setting task information for new or edit task
     task = get_object_or_404(Task, pk=pk) if pk else None
     
+    # Counting how many tasks have been created for current project
     task_count = Task.objects.filter(project=project).count()
     
+    # Checking if the form has been posted
     if request.method == "POST":
         
+        # Checking if the user has a trial account to ensure no more than 3 tasks are created
         if account_type == "free" and task_count >= 3 and pk == None:
-
+        
             return render(request, "project_tasks.html", {
                 'tasks': tasks,
                 'project_id': project_id,
                 'project': project_name,
+                'task_type': "Trial",
                 'result': "trial"
             })
-            
+         
+        # This is if a trial user has less than 3 tasks and also this is used for the pro version       
         else:
 
             form = TaskForm(request.POST, request.FILES, instance=task)
             if form.is_valid():
                 task = form.save(commit=False)
                 if project != None:
+                    
+                    # Set the project
                     task.project = project_instance
+                    
                 task.save()
                 return redirect(reverse('view_only', kwargs={
                     'pk': project_id
                 }))
+    
+    # The form has not been posted             
     else:
         form = TaskForm(instance=task)
     return render(request, 'taskform.html', {
@@ -86,8 +98,8 @@ def create_or_edit_task(request, pk=None, project=None):
 #Deletes a Task    
 def delete_task(request, pk=None):
     
+    # This is to get project ID information for redirect
     get_project = Task.objects.filter(id=pk)
-    
     for pi in get_project:
         project = Project.objects.filter(name=pi.project)
         for pj in project:

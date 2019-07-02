@@ -102,74 +102,77 @@ def project_info(request, pk):
 @login_required()  
 #Edit or Create a Project
 def create_or_edit_project(request, pk=None):
-    
-    # Default Parameters
+
+    # Default parameters
     project_count = 0
     account_type = ""
     
-    # This is to prevent another user accessing another users data
+    # Checking if there is an associated project id (Editing)
     if pk:
-            project_stuff = Project.objects.filter(pk=pk)
-            for pi in project_stuff:
-                project_user = pi.user
-                    
-            if project_user != request.user:
-                return redirect(reverse('get_projects'))
-
-            # Get the project information
-            project_info = Project.objects.filter(user__username=request.user, pk=pk)
-            for pi in project_info:
-                project_name = pi.name
-    else: 
-           # Default for new project
-            project_name = False
+        project_info = Project.objects.filter(user__username=request.user, pk=pk)
         
-    # Get UserProfile information
+        # Makes sure the project belongs to the user
+        if project_info:
+            for pi in project_info:
+                # Get the project name
+                project_name = pi.name
+                
+        # If user tries to access another users project the gets send back to project page
+        else: 
+           return redirect(reverse('get_projects'))
+     
+    # No project id means this is a new project   
+    else:
+        project_name = False
+    
+    # Get the users information and checking if the account is a trial or is a pro version
     info = UserProfile.objects.filter(user=request.user)
     for i in info:
         account_type = i.account
-            
-    # Get all the projects associated with current user    
+        
+    # Count how many projects the user has    
     projects = Project.objects.filter(user__username=request.user)
-    
-    # Set the project count
     for p in projects:
         project_count = project_count + 1
-    
-    # Getting the project information
+
     project = get_object_or_404(Project, pk=pk) if pk else None
-    if request.method == "POST":
-            
-        # Checking if the user has a free account
-        if account_type == "free" and project_count >= 1 and pk == None:
     
+    # Checking if the form has been posted
+    if request.method == "POST":
+
+        # Checking if the user has a trial account to ensure no more than 1 project is created
+        if account_type == "free" and project_count >= 1 and pk == None:
+
             return render(request,'projects.html',{
                 'projects': projects,
                 'result': "trial"
             })
             
+        # This is if a trial user has less than 1 project and also this is used for the pro version    
         else:
-            # Rendering the Project Form
+            
             form = ProjectForm(request.POST, request.FILES, instance=project)
             if form.is_valid():
                 project = form.save(commit=False)
-                    
-                #Setting the user of the project
+                
+                # Set the user for the project 
                 project.user = request.user
-                    
+                
                 project.save()
                 return redirect(reverse('project_info', 
                 kwargs={
                     'pk': project.id
                 }))
-            else:
-                form = ProjectForm(instance=project)
-            
-        return render(request, 'projectform.html', {
-            'form': form,
-            'project': pk,
-            'project_name': project_name
-        })
+    
+    # The form has not been posted            
+    else:
+        form = ProjectForm(instance=project)
+        
+    return render(request, 'projectform.html', {
+        'form': form,
+        'project': pk,
+        'project_name': project_name
+    })
     
     
 @login_required()   

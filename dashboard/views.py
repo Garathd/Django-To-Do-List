@@ -24,6 +24,7 @@ def dashboard_view(request):
         account = u.account
         user_name = u.user
         
+    # Get project info    
     projects = Project.objects.filter(user__username=request.user)
     for p in projects:
         if p.status == "Work":
@@ -33,6 +34,7 @@ def dashboard_view(request):
         if p.status == "Personal":
             personal = personal + 1
         
+        # Get tasks info    
         task = Task.objects.filter(project=p)
         for t in task:
             if t.status == "To Do":

@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% load bootstrap4 %} {% block content %} {% if project %}
+{% extends "base.html" %} {% load bootstrap4 %} {% block content %} 
+
+<!-- Show if editing an existing project -->
+{% if project %}
 <div class="breadcrumbs">
     <a href="{% url 'dashboard' %}">Home</a> / <a href="{% url 'get_projects' %}"> Projects</a> / {{ project_name }}
     <hr />
@@ -7,6 +10,7 @@
 
 <h1 class="center page-title"><strong>Edit Project:</strong> {{ project_name }}</h1>
 
+<!-- Show if this is a new project -->
 {% else %}
 
 <div class="breadcrumbs">

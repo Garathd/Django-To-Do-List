@@ -8,6 +8,7 @@
 <div class="container">
     <div class="credential-list">
 
+        <!-- Login Form -->
         <form method="post" action="{% url 'login' %}?next={{ next }}" class="accountform">
             <div class="form-group">
                 {% csrf_token %} 

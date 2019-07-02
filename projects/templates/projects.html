@@ -5,7 +5,7 @@
     <a href="{% url 'dashboard' %}">Home</a> / Projects / <i class="breadcrumb-type">{{ project_type }}</i>
 </div>
 
-
+<!-- This is for showing app error messages -->
 <hr /> {% if result %}
 <div class="alert alert-danger">
     <div class="messages">
@@ -18,6 +18,7 @@
 
 <h1 class="center page-title">Projects Page</h1>
 
+<!-- If projects exist then show button -->
 {% if projects %}
 <div class="row">
     <div class="col-md-12">
@@ -25,7 +26,10 @@
     </div>
     <hr />
 </div>
-{% endif %} {% if project_count != 0 %}
+{% endif %} 
+
+<!-- If projects exist then show select options -->
+{% if project_count != 0 %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -46,7 +50,9 @@
 
 <div class="row">
 
-    {% if projects %} {% for project in projects %}
+    <!-- If projects exist then show the following -->
+    {% if projects %} 
+    {% for project in projects %}
 
     <div class="col-md-4">
         <div class="project-container">
@@ -66,7 +72,10 @@
             </p>
         </div>
     </div>
-    {% endfor %} {% elif project_count != 0 %}
+    {% endfor %} 
+    
+    <!-- If no project exists under a certain category show helper screen to add new project -->
+    {% elif project_count != 0 %}
     <div class="col-md-12">
         <div class="no-content center">
             <i class="far fa-smile"></i>
@@ -77,6 +86,8 @@
             </div>
         </div>
     </div>
+    
+    <!-- If no project exists show helper screen to add new project -->
     {% else %}
     <div class="col-md-12">
         <div class="no-content center">

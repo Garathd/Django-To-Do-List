@@ -14,6 +14,7 @@
     <br />
     <div class="col-md-2">
         <div class="project-view-icon">
+            <!-- Show a certain icon depending on the project type -->
             {% if project.status == 'Work' %}
             <i class="fas fa-briefcase"></i> {% elif project.status == 'Education' %}
             <i class="fas fa-graduation-cap"></i> {% elif project.status == 'Personal' %}

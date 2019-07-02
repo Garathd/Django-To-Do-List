@@ -11,19 +11,26 @@
 
 <div class="row">
     <div class="col-md-3">
-        {% for i in info %} {% if i.picture %}
+        {% for i in info %} 
+        
+        <!-- Checking if user has uploaded a profile pic -->
+        {% if i.picture %}
         <div class="screenshot-container">
             <a href="{{ MEDIA_URL }}{{ i.picture }}" target="_blank">
             <img class="screenshot"  alt="screenshot" src="{{ MEDIA_URL }}{{ i.picture }}">
         </a>
         </div>
-        <br /> {% else %}
+        <br /> 
+        
+        <!-- If no profile pic then show placeholder image -->
+        {% else %}
         <div class="screenshot-container">
             <a href="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png" target="_blank">
             <img class="screenshot" alt="placeholder" src="{{ MEDIA_URL }}img/placeholder/profile-placeholder.png">
         </a>
         </div>
-        <br /> {% endif %}
+        <br /> 
+        {% endif %}
     </div>
 
     <div class="col-md-9">

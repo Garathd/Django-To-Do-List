@@ -6,6 +6,7 @@
     <hr />
 </div>
 
+<!-- This is for showing app error messages -->
 {% if result %}
 <div class="alert alert-danger">
     <div class="messages">
@@ -18,7 +19,8 @@
 
 <div class="spacing"></div>
 
-{% if task_count != 0 %}
+<!-- Only show if project has tasks and if task type is not trial -->
+{% if task_count != 0 and task_type != "Trial" %}
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
@@ -41,20 +43,23 @@
 </div>
 {% endif %} 
 
+<!-- Show tasks if they exist -->
 {% if tasks %} 
 {% for task in tasks %}
 <div class="task-list">
     <div class="inner-task-list">
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                
+                <!-- Show task screenshot if available -->
                 {% if task.screenshot %}
                 <a href="{{ MEDIA_URL }}{{ task.screenshot }}" target="_blank" alt="click to open" title="Click to open screenshot">
                     <div class="screenshot" alt="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
                     </div>
                 </a>
-
+                
+                <!-- Show placeholder image if screenshot not available -->
                 {% else %}
-
                 <div class="screenshot" alt="placeholder" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
 
                 {% endif %}
@@ -77,25 +82,41 @@
 </div>
 {% endfor %}
 
+<!-- If no tasks exist show helper screen to add tasks or else go back to project information -->
 {% elif project_count != 0 %}
 
-<div class="spacing"></div>
-
-<div class="col-md-12">
-    <div class="no-content center">
-        <i class="far fa-smile"></i>
-        <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
-        &nbsp;
-        <div class="create-new">
-            <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">add</i> New Task</a>
+    <!-- If no tasks under a certain category that are not available then show this helper screen -->
+    {% if task_type != "Trial" %}
+    <div class="spacing"></div>
+    <div class="col-md-12">
+        <div class="no-content center">
+            <i class="far fa-smile"></i>
+            <h4>You have no Tasks categorized as: "{{ task_type }}"</h4>
+            &nbsp;
+            <div class="create-new">
+                <a href="{% url 'create_task' project_id %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">add</i> New Task</a>
+            </div>
         </div>
     </div>
-</div>
+    
+    <!-- If trial account tries to create more than 3 tasks then show this helper screen -->
+    {% else %}
+    <div class="spacing"></div>
+    <div class="col-md-12">
+        <div class="no-content center">
+            <i class="far fa-smile"></i>
+            <h4>You cannot create more tasks unless you buy the <a href="{% url 'profile' %}">pro version</a></h4>
+            &nbsp;
+            <div class="create-new">
+                <a href="{% url 'view_only' project_id %}" class="btn btn-default custom-button edit-options-button"><i class="material-icons page-icon left">description</i>View Project</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
+<!-- If no tasks are available then show this helper screen -->
 {% else %}
-
 <div class="spacing"></div>
-
 <div class="col-md-12">
     <div class="no-content center">
         <i class="far fa-smile"></i>

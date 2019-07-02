@@ -9,6 +9,8 @@
         <div class="spacing"></div>
 
         <p>Trackx is a web app to allow users to set up tasks for various projects to organize workflow</p>
+
+        <!-- Checking if user has a premium account -->
         {% if account == 'pro' %}
         <p>Welcome <a href="{% url 'profile' %}" title="View your Profile" alt="View your Profile">{{ username }}</a> you have a premium account</p>
         {% else %}
