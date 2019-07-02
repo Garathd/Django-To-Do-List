@@ -4,6 +4,10 @@
 
 This project was inspired by the constant paper To Do lists that I seem to have lying around the house. I thought it might be good to create something that can categorize various tasks and projects to make my workflow more efficient. Tasks have status's and and priority to help figure out which task is the most important
 
+## App Overview
+
+There are 2 versions of this application. The trial version and the pro version. When a user registers an account the trial version is the used by default. The limitations of the trial version is that a user can only create 1 project and 3 associated tasks. The pro version can be purchased via the dashboard or else the profile page and it has no limitations to the amount of projects or tasks that a user can create. The pro version of the app is displayed in the product page. The way the app is set up a user cannot navigate to the cart or checkout pages if the pro version is not added to the cart and the cart currently has a limitation in place that only allows users to have 1 item in the cart.
+
 ## UX Design
 
 My UX process was to analyze what I thought would streamline my original paper to do list and try to develop this into a user friendly website that is easy to navigate
@@ -165,6 +169,28 @@ After running each possible scenario multiple times, going over each feature, us
 
 - [HTML Validation](https://www.freeformatter.com/html-validator.html)
 - [CSS Validation](https://jigsaw.w3.org/css-validator/)
+
+#### Scenarios
+
+- Try registering a user that already exists on the system
+- Register a new user
+- Login with incorrect details
+- Login in with correct details
+- Create 1 project with trial account
+- Edit project with trial account
+- Try create a 2nd project with trial account
+- Create 3 tasks with trial account
+- Try create more than 3 tasks with trial account
+- Add Pro Version to Cart
+- Remove Pro Version from Cart
+- Re add the Pro Version to Cart and Go to Checkout
+- Create more than 3 tasks with the pro version
+- Create more than 1 project with pro version
+- Edit Project and Tasks with pro version
+- Use Filter Search on Project Page
+- Use Filter Search on Task Page
+- Delete Project
+- Delete Task
 
 ### Continuous Integration
 
