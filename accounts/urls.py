@@ -3,7 +3,8 @@ from django.contrib import admin
 from . import urls_reset
 from .views import register, profile, logout, login, edit_profile
 
-handler500 = 'errors.views.page_error_found_custom'
+handler500 = 'views.page_error_found_custom'
+handler404 = 'views.error_404_view'
 
 urlpatterns = [
     url(r'^register/$', register, name='register'),
