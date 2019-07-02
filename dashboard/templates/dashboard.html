@@ -12,11 +12,11 @@
 
         <!-- Checking if user has a premium account -->
         {% if account == 'pro' %}
-        <p>Welcome <a href="{% url 'profile' %}" title="View your Profile" alt="View your Profile">{{ username }}</a> you have a premium account</p>
+        <p>Welcome <a href="{% url 'profile' %}" title="View your Profile">{{ username }}</a> you have a premium account</p>
         {% else %}
-        <p>Welcome <a href="{% url 'profile' %}" title="View your Profile" alt="View your Profile">{{ username }}</a> this is a trial version of Trackx. You can purchase pro version</p>
+        <p>Welcome <a href="{% url 'profile' %}" title="View your Profile">{{ username }}</a> this is a trial version of Trackx. You can purchase pro version</p>
 
-        <a href="{% url 'products' %}" class="btn btn-default custom-button new-save-button" type="submit"><i class="material-icons page-icon left">shopping_cart</i>Buy</a> {% endif %}
+        <a href="{% url 'products' %}" class="btn btn-default custom-button new-save-button"><i class="material-icons page-icon left">shopping_cart</i>Buy</a> {% endif %}
     </div>
 </div>
 

@@ -24,7 +24,7 @@
 <div class="row">
     <div class="col-md-10 col-sm-12"></div>
     <div class="col-md-2 col-sm-12">
-        <form action="#" method="POST">
+        <form method="POST">
             {% csrf_token %}
             <select name="search" class="form-control">
               <option value="all">Show All Tasks</option>
@@ -53,14 +53,14 @@
                 
                 <!-- Show task screenshot if available -->
                 {% if task.screenshot %}
-                <a href="{{ MEDIA_URL }}{{ task.screenshot }}" target="_blank" alt="click to open" title="Click to open screenshot">
-                    <div class="screenshot" alt="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
+                <a href="{{ MEDIA_URL }}{{ task.screenshot }}" target="_blank" title="Click to open screenshot">
+                    <div class="screenshot" style="background:url({{ MEDIA_URL }}{{ task.screenshot }})">
                     </div>
                 </a>
                 
                 <!-- Show placeholder image if screenshot not available -->
                 {% else %}
-                <div class="screenshot" alt="placeholder" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
+                <div class="screenshot" style="background:url({{ MEDIA_URL }}img/placeholder/screenshot-placeholder.png)"></div>
 
                 {% endif %}
             </div>
