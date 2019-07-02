@@ -6,7 +6,7 @@ This project was inspired by the constant paper To Do lists that I seem to have 
 
 ## App Overview
 
-There are 2 versions of this application. The trial version and the pro version. When a user registers an account the trial version is the used by default. The limitations of the trial version is that a user can only create 1 project and 3 associated tasks. The pro version can be purchased via the dashboard or else the profile page and it has no limitations to the amount of projects or tasks that a user can create. The pro version of the app is displayed in the product page. The way the app is set up a user cannot navigate to the cart or checkout pages if the pro version is not added to the cart and the cart currently has a limitation in place that only allows users to have 1 item in the cart.
+There are 2 versions of this application. The trial version and the pro version. When a user registers an account the trial version is used by default. The limitations of the trial version is that a user can only create 1 project and 3 associated tasks. The pro version can be purchased via the dashboard or else the profile page and it has no limitations to the amount of projects or tasks that a user can create. The pro version of the app is displayed in the product page. The way the app is set up a user cannot navigate to the cart or checkout pages if the pro version is not added to the cart and the cart currently has a limitation in place that only allows users to have 1 item in the cart.
 
 ## UX Design
 
