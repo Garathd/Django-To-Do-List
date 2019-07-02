@@ -12,8 +12,8 @@ There are 2 versions of this application, The trial version and the pro version.
 
 #### Pro Version of App
 
-- ***Username***: admin
-- ***Password***: adminaccess88
+- ***Username*** : admin
+- ***Password*** : adminaccess88
 
 #### Trial Version of App
 
