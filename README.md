@@ -2,11 +2,11 @@
 
 # Trackx
 
-This project was inspired by the constant paper To Do lists that I seem to have lying around the house. I thought it might be good to create something that can categorize various tasks and projects to make my workflow more efficient. Tasks have status's and and priority to help figure out which task is the most important
+This project was inspired by the constant paper To Do lists that I seem to have lying around the house. I thought it might be good to create something that can categorize various tasks and projects to make my workflow more efficient. Tasks have both a status and priority to help figure out which task is the most important
 
 ## App Overview
 
-There are 2 versions of this application. The trial version and the pro version. When a user registers an account the trial version is used by default. The limitations of the trial version is that a user can only create 1 project and 3 associated tasks. The pro version can be purchased via the dashboard or else the profile page and it has no limitations to the amount of projects or tasks that a user can create. The pro version of the app is displayed in the product page. The way the app is set up a user cannot navigate to the cart or checkout pages if the pro version is not added to the cart and the cart currently has a limitation in place that only allows users to have 1 item in the cart.
+There are 2 versions of this application, The trial version and the pro version. When a user registers an account the trial version is used by default. The limitations of the trial version are that a user can only create 1 project and 3 associated tasks. The pro version can be purchased via the dashboard or else the profile page and it has no limitations to the amount of projects or tasks that a user can create. The pro version of the app is displayed in the product page. The way the app is set up a user cannot navigate to the cart or checkout pages if the pro version is not added to the cart and the cart currently has a limitation in place that only allows users to have 1 item in the cart.
 
 ## UX Design
 
@@ -18,7 +18,7 @@ The requirements are:
 - To be able to view and edit user profile.
 - To be able to purchase a pro version of the app
 - For a trial user to be only able to create 1 project and 3 tasks
-- To be able to to create, edit and delete a project
+- To be able to create, edit and delete a project
 - To be able to create, edit and delete a task
 - To be able to assign a projects type as Work, Educational or Personal
 - To be able to search  projects by Work, Educational or Personal
@@ -41,7 +41,7 @@ User stories:
 
 My design inspiration was essentially to bring my paper to do lists into an interactive application. I have a few small very basic sketches of more or less what I had un my head and how I wanted the site to look. I did my sketches using [Adobe XD](https://www.adobe.com/ie/products/xd.html). Screenshots can be found in the [mockups](https://github.com/Garathd/django-project/tree/master/mockups/images) folder and original Adobe XD Files can be found [here](https://github.com/Garathd/django-project/tree/master/mockups/xd-files).
 
-I was considering also doing some mobile resolution mockups but its more or less the same except for the mobile menu and certain ways elements are positioned
+I was considering also doing some mobile resolution mockups but it's more or less the same except for the mobile menu and certain ways elements are positioned
 
 ***Login/Register Pages*** These pages are more or less the same design wise. If there is an issue with either login or registration then a brief information message should appear on the screen. New users will be directed to the home page.
 
@@ -59,11 +59,11 @@ I was considering also doing some mobile resolution mockups but its more or less
 
 ***Cart Page*** This page is only accessible if an item is in the cart otherwise it redirects back to the profile page. Also if an item is in the cart it should appear as a menu item. The cart page lets a user remove the item or else continue to the checkout
 
-***Checkout Page*** This page lets the user purchase the pro version of the app using stripe. If there is no items in the cart then the user is redirected back to their profile page
+***Checkout Page*** This page lets the user purchase the pro version of the app using stripe. If there are no items in the cart then the user is redirected back to their profile page
 
 ### Back-End
 
-For local testing i'm using sqlite and for live version I'm using Postgre SQL which comes as an add on with Heroku.
+For local testing I'm using sqlite and for live version I'm using Postgre SQL which comes as an addon with Heroku.
 
 #### Accounts Model
 
