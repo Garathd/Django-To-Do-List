@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/Garathd/django-project.svg?branch=master)](https://travis-ci.org/Garathd/django-project)
 
-# Trackx
+# To Do List Application
 
 This project was inspired by the constant paper To Do lists that I seem to have lying around the house. I thought it might be good to create something that can categorize various tasks and projects to make my workflow more efficient. Tasks have both a status and priority to help figure out which task is the most important
 
@@ -58,7 +58,7 @@ User stories:
 
 ### Front-End
 
-My design inspiration was essentially to bring my paper to do lists into an interactive application. I have a few small very basic sketches of more or less what I had un my head and how I wanted the site to look. I did my sketches using [Adobe XD](https://www.adobe.com/ie/products/xd.html). Screenshots can be found in the [mockups](https://github.com/Garathd/django-project/tree/master/mockups/images) folder and original Adobe XD Files can be found [here](https://github.com/Garathd/django-project/tree/master/mockups/xd-files).
+My design inspiration was essentially to bring my paper to do lists into an interactive application. I have a few small very basic sketches of more or less what I had un my head and how I wanted the site to look. I did my sketches using [Adobe XD](https://www.adobe.com/ie/products/xd.html). Screenshots can be found in the [mockups](https://github.com/Garathd/Django-To-Do-List/tree/master/mockups/images) folder and original Adobe XD Files can be found [here](https://github.com/Garathd/Django-To-Do-List/tree/master/mockups/xd-files).
 
 I was considering also doing some mobile resolution mockups but it's more or less the same except for the mobile menu and certain ways elements are positioned
 
