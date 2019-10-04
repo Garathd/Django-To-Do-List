@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Garathd/django-project.svg?branch=master)](https://travis-ci.org/Garathd/django-project)
+[![Build Status](https://travis-ci.org/Garathd/Django-To-Do-List.svg?branch=master)](https://travis-ci.org/Garathd/Django-To-Do-List)
 
 # To Do List Application
 
